@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Form Pengajuan Bantuan Sosial Desa" />
+    <title>
+      Pengajuan Bantuan - SI BanTal (Sistem Informasi Bantuan Sosial)
+    </title>
+  </head>
+
+  <body>
+    <header>
+      <h1>Form Pengajuan Bantuan Sosial Desa</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Dashboard</a></li>
+          <li><a href="about.html">Tentang Sistem</a></li>
+          <li><a href="portofolio.html">Program Bantuan</a></li>
+          <li><a href="contact.html">Pengajuan Bantuan</a></li>
+        </ul>
+      </nav>
+    </header>
+    <br /><br />
+
+    <main>
+      <section>
+        <h2>Data Pemohon</h2>
+        <p>
+          Silakan isi formulir pengajuan bantuan dengan data yang benar dan
+          lengkap sesuai identitas resmi.
+        </p>
+        <h4>PERHATIKAN!</h4>
+        <ul>
+          <li>
+            Unggah dokumen pendukung yang diminta dan periksa kembali data
+            sebelum mengirimkan formulir. Data yang masuk akan diverifikasi oleh
+            pihak pertama untuk menentukan kelayakan penerimaan bantuan.
+          </li>
+          <li>
+            Dengan mengirimkan formulir ini, Anda menyatakan bahwa seluruh
+            informasi yang diberikan adalah benar dan dapat
+            dipertanggungjawabkan.
+          </li>
+        </ul>
+        <form action="#" method="POST" enctype="multipart/form-data">
+          <label for="nama">Nama Lengkap Pemohon:</label><br />
+          <input type="text" id="nama" name="nama" required /><br /><br />
+
+          <label for="nik">NIK (16 digit):</label><br />
+          <input
+            type="text"
+            id="nik"
+            name="nik"
+            pattern="[0-9]{16}"
+            minlength="16"
+            maxlength="16"
+            title="NIK harus terdiri dari 16 digit angka"
+            required
+          /><br /><br />
+
+          <label for="hp">Nomor HP:</label><br />
+          <input
+            type="text"
+            id="hp"
+            name="hp"
+            pattern="[0-9]{10,13}"
+            title="Masukkan nomor HP 10-13 digit angka"
+            required
+          /><br /><br />
+
+          <label for="provinsi">Provinsi:</label><br />
+          <select id="provinsi" name="provinsi" required>
+            <option value="">-- Provinsi --</option>
+            <option value="aceh">Aceh</option>
+            <option value="bengkulu">Bengkulu</option>
+            <option value="bali">Bali</option>
+            <option value="jakarta">DKI Jakarta</option>
+            <option value="jogja">DI Yogyakarta</option>
+            <option value="Jawa Timur">Jawa Timur</option>
+            <option value="Jawa Barat">Jawa Barat</option>
+            <option value="Jawa Tengah">Jawa Tengah</option></select
+          ><br /><br />
+
+          <label for="kota">Kota/Kabupaten:</label><br />
+          <textarea id="kota" name="kota" rows="2" required></textarea
+          ><br /><br />
+
+          <label for="kecamatan">Kecamatan:</label><br />
+          <textarea id="kecamatan" name="kecamatan" row="1" required></textarea
+          ><br /><br />
+
+          <label for="desa">Nama Desa:</label><br />
+          <textarea id="desa" name="desa" rows="2" required></textarea
+          ><br /><br />
+
+          <label for="jenis">Jenis Bantuan:</label><br />
+          <select id="jenis" name="jenis" required>
+            <option value="">-- Pilih Bantuan --</option>
+            <option value="tunai">Bantuan Tunai</option>
+            <option value="sembako">Bantuan Sembako</option>
+            <option value="pendidikan">Bantuan Pendidikan</option>
+            <option value="kesehatan">Bantuan Kesehatan</option>
+            <option value="kebutuhan">Kebutuhan Perbaikan</option></select
+          ><br /><br />
+
+          <label for="alasan">Alasan Pengajuan:</label><br />
+          <textarea id="alasan" name="alasan" rows="4" required></textarea
+          ><br /><br />
+
+          <button type="submit">Kirim Pengajuan</button>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 SI BanTal - Sistem Informasi Bantuan Sosial</p>
+    </footer>
+  </body>
+</html>
