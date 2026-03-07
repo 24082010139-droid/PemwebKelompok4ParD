@@ -1,80 +1,164 @@
-<html lang="id">
+<!doctype html>
+<html lang="id" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title>Tentang Sistem - SI BanTal (Sistem Informasi Bantuan Sosial)</title>
+    <title>Tentang Sistem - SI BanTal</title>
     <link rel="stylesheet" href="../dist/output.css" />
   </head>
-  <body>
-    <header>
-      <h1>SI BanTal - Sistem Informasi Bantuan Sosial</h1>
-      <nav>
-        <ul>
-          <li><a href="index.html">Dashboard</a></li>
-          <li><a href="about.html">Tentang Sistem</a></li>
-          <li><a href="portofolio.html">Program Bantuan</a></li>
-          <li><a href="contact.html">Pengajuan Bantuan</a></li>
-        </ul>
-      </nav>
+  <body class="font-sans text-slate-800 bg-slate-50">
+     <header
+      class="bg-transparent absolute top-0 left-0 w-full flex items-center z-10 transition duration-300"
+    >
+      <div class="container mx-auto">
+        <div class="flex items-center justify-between relative px-4">
+          <div class="px-4">
+            <a
+              href="index.html"
+              class="font-bold text-lg text-teal-500 block py-6"
+              >SI BanTal</a
+            >
+          </div>
+          <div class="flex items-center px-4">
+          
+          <button id="hamburger" name="hamburger" type="button" class="block absolute right-4 lg:hidden">
+            <span class="hamburger-line transition duration-300 ease-in-out origin-top-left"></span>
+            <span class="hamburger-line transition duration-300 ease-in-out"></span>
+            <span class="hamburger-line transition duration-300 ease-in-out origin-bottom-left"></span>
+          </button>
+
+          <nav id="nav-menu" class="hidden absolute py-5 bg-white shadow-lg rounded-lg max-w-[250px] w-full right-4 top-full lg:block lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none">
+            <ul class="block lg:flex">
+              <li class="group"><a href="index.html" class="text-base text-slate-800 py-2 mx-8 flex group-hover:text-teal-500">Dashboard</a></li>
+              <li class="group"><a href="about.html" class="text-base text-slate-800 py-2 mx-8 flex group-hover:text-teal-500">Tentang Sistem</a></li>
+              <li class="group"><a href="portofolio.html" class="text-base text-slate-800 py-2 mx-8 flex group-hover:text-teal-500">Program Bantuan</a></li>
+              <li class="group"><a href="contact.html" class="text-base text-slate-800 py-2 mx-8 flex group-hover:text-teal-500">Pengajuan Bantuan</a></li>
+            </ul>
+          </nav>
+          
+
+        </div>
+      </div>
     </header>
-    <main>
-      <section>
-        <h2>Profil Singkat</h2>
-        <p>
-          SiBanTal (Bantuan Sosial) adalah sistem informasi yang dirancang untuk
-          membantu perangkat desa dalam mengelola pendataan, verifikasi, dan
-          penyaluran bantuan sosial secara terpusat dan transparan. Sistem ini
-          mendukung integrasi bantuan dari pemerintah maupun donasi individu
-          atau pihak lain dalam satu platform terpadu.
-        </p>
-        <img src="bansos.jpg" alt="Foto Bansos" />
-        <style>
-          img {
-            display: block;
-            margin: 20px auto;
-          }
-        </style>
-      </section>
-      <section>
-        <h2>Visi dan Misi</h2>
-        <p><strong>Visi:</strong></p>
-        Mewujudkan sistem bantuan sosial desa yang transparan, terintegrasi, dan
-        tepat sasaran.
-        <p><strong>Misi:</strong></p>
-        <ul>
-          <li>
-            Menyediakan sistem pendataan warga yang mudah digunakan oleh
-            perangkat desa
-          </li>
-          <li>
-            Mempermudah proses verifikasi dan validasi calon penerima bantuan
-          </li>
-          <li>
-            Menggabungkan bantuan pemerintah dan donasi masyarakat dalam satu
-            sistem terpusat
-          </li>
-          <li>
-            Menyajikan laporan distribusi bantuan secara transparan dan
-            terdokumentasi
-          </li>
-        </ul>
-      </section>
-      <section>
-        <h2>Tim Penyusun</h2>
-        <p>
-          Sistem ini dikembangkan oleh Kelompok 4 sebagai bagian dari tugas
-          praktikum:
-        </p>
-        <ul class="list-tim">
-          <li><a href="biodata-sarah.html">Sarah (24082010139)</a></li>
-          <li><a href="biodata-daffa.html">Daffa (24082010149)</a></li>
-          <li><a href="biodata-zerlina.html">Zerlina (24082010164)</a></li>
-        </ul>
-      </section>
-    </main>
-    <footer>
-      <p>&copy; 2026 SI BanTal (Sistem Informasi Bantuan Sosial)</p>
-    </footer>
+
+    <section id="about" class="pt-36 pb-16">
+      <div class="container mx-auto">
+        <div class="flex flex-wrap">
+          <div class="w-full px-4 mb-10 lg:w-1/2">
+            <h4 class="font-bold uppercase text-teal-500 text-lg mb-3">
+              Tentang Sistem
+            </h4>
+            <h2
+              class="font-bold text-slate-900 text-3xl mb-5 max-w-md lg:text-4xl"
+            >
+              Mengenal SI BanTal Lebih Dekat
+            </h2>
+            <p class="font-medium text-slate-500 text-base max-w-xl lg:text-lg">
+              SiBanTal (Sistem Informasi Bantuan Sosial) adalah platform digital
+              yang dirancang untuk membantu perangkat desa dalam mengelola
+              pendataan, verifikasi, dan penyaluran bantuan sosial secara
+              terpusat dan transparan.
+            </p>
+          </div>
+          <div class="w-full px-4 lg:w-1/2">
+            <img
+              src="bansos.jpg"
+              alt="Informasi Bansos"
+              class="rounded-xl shadow-lg max-w-full mx-auto"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="visi-misi" class="pt-16 pb-16 bg-white">
+      <div class="container mx-auto">
+        <div class="flex flex-wrap">
+          <div class="w-full px-4 mb-10 lg:w-1/2">
+            <h3 class="font-bold text-slate-900 text-2xl mb-4">Visi Kami</h3>
+            <p class="font-medium text-slate-500 text-base mb-6">
+              Mewujudkan sistem bantuan sosial desa yang transparan,
+              terintegrasi, dan tepat sasaran bagi seluruh lapisan masyarakat.
+            </p>
+          </div>
+          <div class="w-full px-4 lg:w-1/2">
+            <h3 class="font-bold text-slate-900 text-2xl mb-4">Misi Utama</h3>
+            <ul
+              class="list-disc list-inside text-slate-500 font-medium leading-relaxed"
+            >
+              <li>
+                Menyediakan pendataan warga yang akurat dan mudah diakses.
+              </li>
+              <li>Mempercepat proses verifikasi penerima manfaat.</li>
+              <li>
+                Menjamin transparansi penyaluran dana bantuan kepada publik.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tim" class="pt-16 pb-32">
+      <div class="container mx-auto px-4">
+        <div class="w-full text-center mb-16">
+          <h4 class="font-semibold text-teal-500 text-lg mb-2">Tim Kami</h4>
+          <h2 class="font-bold text-slate-900 text-3xl mb-4">
+            Mahasiswa Sistem Informasi Semester 4 Paralel D
+          </h2>
+          <p class="font-medium text-slate-500 text-base md:text-lg">
+            Project ini dikembangkan oleh Kelompok 4 sebagai bagian dari tugas
+            praktikum Pemrograman Web.
+          </p>
+        </div>
+
+        <div class="flex flex-wrap justify-center gap-8">
+          <a
+            href="biodata-daffa.html"
+            class="w-full md:w-1/4 bg-white rounded-xl shadow-lg overflow-hidden hover:scale-105 transition duration-300"
+          >
+            <div class="p-6 text-center">
+              <img
+                src="foto_daffa.jpg"
+                alt="Daffa"
+                class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-2 border-teal-500"
+              />
+              <h3 class="font-bold text-slate-900">Ananda Daffa Arrayan</h3>
+              <p class="text-sm text-slate-500">Anggota</p>
+            </div>
+          </a>
+          <a
+            href="biodata-sarah.html"
+            class="w-full md:w-1/4 bg-white rounded-xl shadow-lg overflow-hidden hover:scale-105 transition duration-300"
+          >
+            <div class="p-6 text-center">
+              <img
+                src="foto_sarah.jpg"
+                alt="Sarah"
+                class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-2 border-teal-500"
+              />
+              <h3 class="font-bold text-slate-900">Sarah Amelia Rachma</h3>
+              <p class="text-sm text-slate-500">Captain</p>
+            </div>
+          </a>
+          <a
+            href="biodata-zerlina.html"
+            class="w-full md:w-1/4 bg-white rounded-xl shadow-lg overflow-hidden hover:scale-105 transition duration-300"
+          >
+            <div class="p-6 text-center">
+              <img
+                src="foto_zerli.jpeg"
+                alt="Zerlina"
+                class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-2 border-teal-500"
+              />
+              <h3 class="font-bold text-slate-900">Zerlina Anggun</h3>
+              <p class="text-sm text-slate-500">Anggota</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <script src="script.js"></script>
   </body>
 </html>

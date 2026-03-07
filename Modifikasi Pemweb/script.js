@@ -50,3 +50,28 @@ if (form) {
     form.reset();
   });
 }
+// Navbar Fixed
+window.onscroll = function () {
+  const header = document.querySelector("header");
+
+  // Jika layar digeser ke bawah lebih dari 0 pixel
+  if (window.pageYOffset > 0) {
+    header.classList.add("navbar-fixed");
+  } else {
+    header.classList.remove("navbar-fixed");
+  }
+};
+
+// --- BAGIAN 3: HAMBURGER MENU ---
+const hamburger = document.querySelector("#hamburger");
+const navMenu = document.querySelector("#nav-menu");
+
+if (hamburger && navMenu) {
+  hamburger.addEventListener("click", function () {
+    // Menambah/menghapus class 'hamburger-active' untuk animasi tanda silang X
+    hamburger.classList.toggle("hamburger-active");
+
+    // Menambah/menghapus class 'hidden' untuk memunculkan atau menyembunyikan menu
+    navMenu.classList.toggle("hidden");
+  });
+}

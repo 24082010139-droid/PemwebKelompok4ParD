@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="id">
+<html lang="id" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,60 +7,87 @@
       name="description"
       content="Dashboard Sistem Informasi Bantuan Sosial Desa"
     />
-    <title>Dashboard - SI BanTal (Sistem Informasi Bantuan Sosial)</title>
+    <title>Dashboard - SI BanTal</title>
+
     <link rel="stylesheet" href="../dist/output.css" />
   </head>
+  <body class="font-sans text-slate-800">
+    <header
+      class="bg-transparent absolute top-0 left-0 w-full flex items-center z-10 transition duration-300"
+    >
+      <div class="container mx-auto">
+        <div class="flex items-center justify-between relative px-4">
+          <div class="px-4">
+            <a
+              href="index.html"
+              class="font-bold text-lg text-teal-500 block py-6"
+              >SI BanTal</a
+            >
+          </div>
+          <div class="flex items-center px-4">
+          
+          <button id="hamburger" name="hamburger" type="button" class="block absolute right-4 lg:hidden">
+            <span class="hamburger-line transition duration-300 ease-in-out origin-top-left"></span>
+            <span class="hamburger-line transition duration-300 ease-in-out"></span>
+            <span class="hamburger-line transition duration-300 ease-in-out origin-bottom-left"></span>
+          </button>
 
-  <body>
-    <header>
-      <h1>SI BanTal - Sistem Informasi Bantuan Sosial</h1>
-      <nav>
-        <ul>
-          <li><a href="index.html">Dashboard</a></li>
-          <li><a href="about.html">Tentang Sistem</a></li>
-          <li><a href="portofolio.html">Program Bantuan</a></li>
-          <li><a href="contact.html">Pengajuan Bantuan</a></li>
-        </ul>
-      </nav>
+          <nav id="nav-menu" class="hidden absolute py-5 bg-white shadow-lg rounded-lg max-w-[250px] w-full right-4 top-full lg:block lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none">
+            <ul class="block lg:flex">
+              <li class="group"><a href="index.html" class="text-base text-slate-800 py-2 mx-8 flex group-hover:text-teal-500">Dashboard</a></li>
+              <li class="group"><a href="about.html" class="text-base text-slate-800 py-2 mx-8 flex group-hover:text-teal-500">Tentang Sistem</a></li>
+              <li class="group"><a href="portofolio.html" class="text-base text-slate-800 py-2 mx-8 flex group-hover:text-teal-500">Program Bantuan</a></li>
+              <li class="group"><a href="contact.html" class="text-base text-slate-800 py-2 mx-8 flex group-hover:text-teal-500">Pengajuan Bantuan</a></li>
+            </ul>
+          </nav>
+          
+
+        </div>
+      </div>
     </header>
 
-    <main>
-      <section>
-        <h2>Selamat Datang</h2>
-        <p>
-          SI BanTal adalah sistem informasi yang dirancang untuk membantu
-          perangkat desa dalam mengelola, memverifikasi, dan mendistribusikan
-          bantuan sosial secara transparan dan terintegrasi.
-        </p>
-      </section>
+    <section id="home" class="pt-36 pb-32 bg-slate-50">
+      <div class="container mx-auto">
+        <div class="flex flex-wrap">
+          <div class="w-full self-center px-4 lg:w-1/2">
+            <h1 class="text-base font-semibold text-teal-500 md:text-xl">
+              Selamat Datang di
+              <span
+                class="block font-bold text-slate-900 text-4xl mt-1 lg:text-5xl"
+                >Dashboard SI BanTal</span
+              >
+            </h1>
+            <h2 class="font-medium text-slate-500 text-lg mb-5 lg:text-2xl">
+              Sistem Informasi Bantuan Sosial
+            </h2>
+            <p class="font-medium text-slate-400 mb-10 leading-relaxed">
+              Kelola dan pantau program bantuan sosial dengan mudah, transparan,
+              dan tepat sasaran melalui layanan digital terpadu.
+            </p>
 
-      <section>
-        <h2>Fitur Utama Sistem</h2>
-        <ul>
-          <li>Pendataan dan verifikasi calon penerima bantuan</li>
-          <li>Pengelolaan berbagai program bantuan desa</li>
-          <li>Integrasi bantuan pemerintah dan CSR</li>
-          <li>Transparansi laporan distribusi bantuan</li>
-        </ul>
-      </section>
+            <a
+              href="contact.html"
+              class="text-base font-semibold text-white bg-teal-500 py-3 px-8 rounded-full hover:shadow-lg hover:opacity-80 transition duration-300 ease-in-out"
+            >
+              Mulai Pengajuan
+            </a>
+          </div>
 
-      <section>
-        <h2>Ringkasan Program Aktif</h2>
-        <p>
-          Saat ini terdapat beberapa program bantuan yang sedang berjalan,
-          termasuk Bantuan Langsung Tunai (BLT), Bantuan Sembako, dan Program
-          Bantuan Pendidikan.
-        </p>
-        <p>
-          Silakan kunjungi menu
-          <a href="portofolio.html">Program Bantuan</a>
-          untuk melihat detail lengkap.
-        </p>
-      </section>
-    </main>
-
+          <div class="w-full self-end px-4 lg:w-1/2">
+            <div class="relative mt-10 lg:mt-9 lg:right-0">
+              <img
+                src="bansos.jpg"
+                alt="Bansos"
+                class="max-w-full mx-auto rounded-xl shadow-lg"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
     <footer>
-      <p>&copy; 2026 SI BanTal (Sistem Informasi Bantuan Sosial)</p>
+      <p>&copy; 2026 SI BanTal - Sistem Informasi Bantuan Sosial</p>
     </footer>
+    <script src="script.js"></script>
   </body>
 </html>

@@ -1,63 +1,65 @@
 @import "tailwindcss";
 
+/* PENTING: Memberitahu Tailwind v4 lokasi file HTML kamu agar class-nya terdeteksi */
+@source "../Modifikasi Pemweb/**/*.html";
+
 /* 1. Pengaturan Dasar Halaman */
 body {
-  font-family: "Courier New", Courier, monospace;
   background-color: #f4f4f4;
   margin: 0;
   padding: 0;
-  display: block; /* Mengembalikan aliran dokumen dari atas ke bawah */
+  display: block;
 }
 
-/* 2. Header & Navigasi Terpusat */
-header {
-  background-color: white;
-  padding: 30px 20px;
-  text-align: center;
-  border-bottom: 1px solid #ddd;
+/* --- BAGIAN NAVBAR (DIEDIT UNTUK STICKY & BLUR) --- */
+.navbar-fixed {
+  /* Menggunakan bg-white/70 (v4) dan !important agar menang dari class absolute */
+  @apply fixed z-[9999] bg-white/70 backdrop-blur-md shadow-sm transition duration-300;
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100%;
 }
 
-header h1 {
-  margin: 0 0 15px 0;
-  font-size: 24px;
-}
-
-header nav ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-header nav ul li {
-  display: inline;
-  margin: 0 15px;
-}
-
-header nav ul li a {
-  text-decoration: none;
-  color: blue;
-  font-weight: bold;
-}
-
+/* Menghapus gaya header lama yang solid agar efek blur terlihat */
 header nav ul li a:hover {
-  text-decoration: underline;
+  @apply text-teal-500 underline transition;
+}
+/* --- AKHIR BAGIAN NAVBAR --- */
+
+/* --- HAMBURGER MENU --- */
+.hamburger-line {
+  @apply w-[30px] h-[2px] my-2 block bg-slate-800;
 }
 
-/* 3. Pengaturan Konten Utama (Main) agar Terpusat */
+/* Animasi saat tombol diklik (berubah jadi X) */
+.hamburger-active > span:nth-child(1) {
+  @apply rotate-45;
+}
+
+.hamburger-active > span:nth-child(2) {
+  @apply scale-0;
+}
+
+.hamburger-active > span:nth-child(3) {
+  @apply -rotate-45;
+}
+
+/* 3. Pengaturan Konten Utama (Main) - TETAP SESUAI ASLINYA */
 main {
   background: white;
-  max-width: 900px; /* Membatasi lebar agar tidak terlalu meluas */
-  margin: 40px auto; /* Menengahkan kotak di layar (atas-bawah 40px, kiri-kanan otomatis) */
-  padding: 40px; /* Memberi jarak dalam agar teks tidak mepet ke pinggir kotak putih */
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 40px;
   border-radius: 8px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   min-height: 400px;
 }
 
-/* 4. Merapikan Section dan Teks */
+/* 4. Merapikan Section dan Teks - TETAP SESUAI ASLINYA */
 section {
   margin-bottom: 30px;
-  line-height: 1.6; /* Memberi spasi antar baris teks agar enak dibaca */
+  line-height: 1.6;
 }
 
 section h2 {
@@ -66,16 +68,16 @@ section h2 {
   margin-bottom: 20px;
 }
 
-/* 5. Khusus Halaman Pengajuan (Form) */
+/* 5. Khusus Halaman Pengajuan (Form) - TIDAK DIHAPUS */
 #formPengajuan {
-  max-width: 500px; /* Form dibuat lebih ramping di dalam kotak main */
-  margin: 0; /* Tetap di kiri di dalam padding main */
+  max-width: 500px;
+  margin: 0;
   display: grid;
   gap: 10px;
 }
 
 #formPengajuan br {
-  display: none; /* Menghilangkan efek <br> yang mengganggu */
+  display: none;
 }
 
 #formPengajuan input,
@@ -103,7 +105,7 @@ section h2 {
   background-color: #218838;
 }
 
-/* 6. Footer */
+/* 6. Footer - TETAP SESUAI ASLINYA */
 footer {
   text-align: center;
   padding: 30px;
