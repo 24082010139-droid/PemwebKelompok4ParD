@@ -1,144 +1,146 @@
 <!doctype html>
 <html lang="id">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Form Pengajuan Bantuan Sosial Desa" />
-    <title>
-      Pengajuan Bantuan - SI BanTal (Sistem Informasi Bantuan Sosial)
-    </title>
-    <link rel="stylesheet" href="../dist/output.css" />
-  </head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Form Pengajuan Bantuan Sosial Desa" />
+    <title>
+      Pengajuan Bantuan - SI BanTal (Sistem Informasi Bantuan Sosial)
+    </title>
+    <link rel="stylesheet" href="../dist/output.css" />
+  </head>
 
-  <body>
-     <header
-      class="bg-transparent absolute top-0 left-0 w-full flex items-center z-10 transition duration-300"
-    >
-      <div class="container mx-auto">
-        <div class="flex items-center justify-between relative px-4">
-          <div class="px-4">
-            <a
-              href="index.html"
-              class="font-bold text-lg text-teal-500 block py-6"
-              >SI BanTal</a
-            >
-          </div>
-          <div class="flex items-center px-4">
-          
-          <button id="hamburger" name="hamburger" type="button" class="block absolute right-4 lg:hidden">
-            <span class="hamburger-line transition duration-300 ease-in-out origin-top-left"></span>
-            <span class="hamburger-line transition duration-300 ease-in-out"></span>
-            <span class="hamburger-line transition duration-300 ease-in-out origin-bottom-left"></span>
-          </button>
+  <body>
+     <header
+      class="bg-transparent absolute top-0 left-0 w-full flex items-center z-10 transition duration-300"
+    >
+      <div class="container mx-auto">
+        <div class="flex items-center justify-between relative px-4">
+          <div class="px-4">
+            <a
+              href="index.html"
+              class="font-bold text-lg text-teal-500 block py-6"
+              >SI BanTal</a
+            >
+          </div>
+          <div class="flex items-center px-4">
+          
+          <button id="hamburger" name="hamburger" type="button" class="block absolute right-4 lg:hidden">
+            <span class="hamburger-line transition duration-300 ease-in-out origin-top-left"></span>
+            <span class="hamburger-line transition duration-300 ease-in-out"></span>
+            <span class="hamburger-line transition duration-300 ease-in-out origin-bottom-left"></span>
+          </button>
 
-          <nav id="nav-menu" class="hidden absolute py-5 bg-white shadow-lg rounded-lg max-w-[250px] w-full right-4 top-full lg:block lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none">
-            <ul class="block lg:flex">
-              <li class="group"><a href="index.html" class="text-base text-slate-800 py-2 mx-8 flex group-hover:text-teal-500">Dashboard</a></li>
-              <li class="group"><a href="about.html" class="text-base text-slate-800 py-2 mx-8 flex group-hover:text-teal-500">Tentang Sistem</a></li>
-              <li class="group"><a href="portofolio.html" class="text-base text-slate-800 py-2 mx-8 flex group-hover:text-teal-500">Program Bantuan</a></li>
-              <li class="group"><a href="contact.html" class="text-base text-slate-800 py-2 mx-8 flex group-hover:text-teal-500">Pengajuan Bantuan</a></li>
-            </ul>
-          </nav>
-          
+          <nav id="nav-menu" class="hidden absolute py-5 bg-white shadow-lg rounded-lg max-w-[250px] w-full right-4 top-full lg:block lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none">
+            <ul class="block lg:flex">
+              <li class="group"><a href="index.html" class="text-base text-slate-800 py-2 mx-8 flex group-hover:text-teal-500">Dashboard</a></li>
+              <li class="group"><a href="about.html" class="text-base text-slate-800 py-2 mx-8 flex group-hover:text-teal-500">Tentang Sistem</a></li>
+              <li class="group"><a href="portofolio.html" class="text-base text-slate-800 py-2 mx-8 flex group-hover:text-teal-500">Program Bantuan</a></li>
+              <li class="group"><a href="contact.html" class="text-base text-slate-800 py-2 mx-8 flex group-hover:text-teal-500">Pengajuan Bantuan</a></li>
+            </ul>
+          </nav>
+          
 
-        </div>
-      </div>
-    </header>
-    <br /><br />
+        </div>
+      </div>
+    </header>
+    <br /><br />
 
-    <main>
-      <section>
-        <h2>Data Pemohon</h2>
-        <p>
-          Silakan isi formulir pengajuan bantuan dengan data yang benar dan
-          lengkap sesuai identitas resmi.
-        </p>
-        <h4>PERHATIKAN!</h4>
-        <ul>
-          <li>
-            Unggah dokumen pendukung yang diminta dan periksa kembali data
-            sebelum mengirimkan formulir. Data yang masuk akan diverifikasi oleh
-            pihak pertama untuk menentukan kelayakan penerimaan bantuan.
-          </li>
-          <li>
-            Dengan mengirimkan formulir ini, Anda menyatakan bahwa seluruh
-            informasi yang diberikan adalah benar dan dapat
-            dipertanggungjawabkan.
-          </li>
-        </ul>
-        <form id="formPengajuan" novalidate>
-          <label for="nama">Nama Lengkap Pemohon:</label><br />
-          <input type="text" id="nama" name="nama" required /><br /><br />
+    <main>
+      <section>
+        <h2>Data Pemohon</h2>
+        <p>
+          Silakan isi formulir pengajuan bantuan dengan data yang benar dan
+          lengkap sesuai identitas resmi.
+        </p>
+        <h4>PERHATIKAN!</h4>
+        <ul>
+          <li>
+            Unggah dokumen pendukung yang diminta dan periksa kembali data
+            sebelum mengirimkan formulir. Data yang masuk akan diverifikasi oleh
+            pihak pertama untuk menentukan kelayakan penerimaan bantuan.
+          </li>
+          <li>
+            Dengan mengirimkan formulir ini, Anda menyatakan bahwa seluruh
+            informasi yang diberikan adalah benar dan dapat
+            dipertanggungjawabkan.
+          </li>
+        </ul>
+        <form id="formPengajuan" novalidate>
+          <label for="nama">Nama Lengkap Pemohon:</label><br />
+          <input type="text" id="nama" name="nama" required /><br /><br />
 
-          <label for="nik">NIK (16 digit):</label><br />
-          <input
-            type="text"
-            id="nik"
-            name="nik"
-            pattern="[0-9]{16}"
-            minlength="16"
-            maxlength="16"
-            title="NIK harus terdiri dari 16 digit angka"
-            required
-          /><br /><br />
+          <label for="nik">NIK (16 digit):</label><br />
+          <input
+            type="text"
+            id="nik"
+            name="nik"
+            pattern="[0-9]{16}"
+            minlength="16"
+            maxlength="16"
+            title="NIK harus terdiri dari 16 digit angka"
+            required
+          /><br /><br />
 
-          <label for="hp">Nomor HP:</label><br />
-          <input
-            type="text"
-            id="hp"
-            name="hp"
-            pattern="[0-9]{10,13}"
-            title="Masukkan nomor HP 10-13 digit angka"
-            required
-          /><br /><br />
+          <label for="hp">Nomor HP:</label><br />
+          <input
+            type="text"
+            id="hp"
+            name="hp"
+            pattern="[0-9]{10,13}"
+            title="Masukkan nomor HP 10-13 digit angka"
+            required
+          /><br /><br />
 
-          <label for="provinsi">Provinsi:</label><br />
-          <select id="provinsi" name="provinsi" required>
-            <option value="">-- Provinsi --</option>
-            <option value="aceh">Aceh</option>
-            <option value="bengkulu">Bengkulu</option>
-            <option value="bali">Bali</option>
-            <option value="jakarta">DKI Jakarta</option>
-            <option value="jogja">DI Yogyakarta</option>
-            <option value="Jawa Timur">Jawa Timur</option>
-            <option value="Jawa Barat">Jawa Barat</option>
-            <option value="Jawa Tengah">Jawa Tengah</option></select
-          ><br /><br />
+          <label for="provinsi">Provinsi:</label><br />
+          <select id="provinsi" name="provinsi" required>
+            <option value="">-- Provinsi --</option>
+            <option value="aceh">Aceh</option>
+            <option value="bengkulu">Bengkulu</option>
+            <option value="bali">Bali</option>
+            <option value="jakarta">DKI Jakarta</option>
+            <option value="jogja">DI Yogyakarta</option>
+            <option value="Jawa Timur">Jawa Timur</option>
+            <option value="Jawa Barat">Jawa Barat</option>
+            <option value="Jawa Tengah">Jawa Tengah</option></select
+          ><br /><br />
 
-          <label for="kota">Kota/Kabupaten:</label><br />
-          <textarea id="kota" name="kota" rows="2" required></textarea
-          ><br /><br />
+          <label for="kota">Kota/Kabupaten:</label><br />
+          <textarea id="kota" name="kota" rows="2" required></textarea
+          ><br /><br />
 
-          <label for="kecamatan">Kecamatan:</label><br />
-          <textarea id="kecamatan" name="kecamatan" row="1" required></textarea
-          ><br /><br />
+          <label for="kecamatan">Kecamatan:</label><br />
+          <textarea id="kecamatan" name="kecamatan" row="1" required></textarea
+          ><br /><br />
 
-          <label for="desa">Nama Desa:</label><br />
-          <textarea id="desa" name="desa" rows="2" required></textarea
-          ><br /><br />
+          <label for="desa">Nama Desa:</label><br />
+          <textarea id="desa" name="desa" rows="2" required></textarea
+          ><br /><br />
 
-          <label for="jenis">Jenis Bantuan:</label><br />
-          <select id="jenis" name="jenis" required>
-            <option value="">-- Pilih Bantuan --</option>
-            <option value="tunai">Bantuan Tunai</option>
-            <option value="sembako">Bantuan Sembako</option>
-            <option value="pendidikan">Bantuan Pendidikan</option>
-            <option value="kesehatan">Bantuan Kesehatan</option>
-            <option value="kebutuhan">Kebutuhan Perbaikan</option></select
-          ><br /><br />
+          <label for="jenis">Jenis Bantuan:</label><br />
+          <select id="jenis" name="jenis" required>
+            <option value="">-- Pilih Bantuan --</option>
+            <option value="tunai">Bantuan Tunai</option>
+            <option value="sembako">Bantuan Sembako</option>
+            <option value="pendidikan">Bantuan Pendidikan</option>
+            <option value="kesehatan">Bantuan Kesehatan</option>
+            <option value="kebutuhan">Kebutuhan Perbaikan</option></select
+          ><br /><br />
 
-          <label for="alasan">Alasan Pengajuan:</label><br />
-          <textarea id="alasan" name="alasan" rows="4" required></textarea
-          ><br /><br />
+          <label for="alasan">Alasan Pengajuan:</label><br />
+          <textarea id="alasan" name="alasan" rows="4" required></textarea
+          ><br /><br />
 
-          <button type="submit">Kirim Pengajuan</button>
-        </form>
-      </section>
-    </main>
+          <button type="submit">Kirim Pengajuan</button>
+        </form>
+      </section>
+    </main>
 
-    <footer>
-      <p>&copy; 2026 SI BanTal - Sistem Informasi Bantuan Sosial</p>
-    </footer>
-    <script src="script.js"></script>
-  </body>
+    <footer>
+      <p>&copy; 2026 SI BanTal - Sistem Informasi Bantuan Sosial</p>
+    </footer>
+    <script src="script.js"></script>
+  </body>
 </html>
+
+perbaiki dan percantik code itu
