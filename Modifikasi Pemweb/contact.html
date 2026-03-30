@@ -1,39 +1,87 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Form Pengajuan dan Permintaan Bantuan Sosial Desa" />
+    <meta
+      name="description"
+      content="Form Pengajuan dan Permintaan Bantuan Sosial Desa"
+    />
     <title>Pengajuan Bantuan - SI BanTal</title>
     <link rel="stylesheet" href="../dist/output.css" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-      .navbar-fixed { @apply fixed z-[9999] bg-white bg-opacity-80 backdrop-blur-sm shadow-md transition duration-300; }
-      /* Style untuk input form */
-      .form-input { @apply w-full bg-slate-50 text-slate-800 border border-slate-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition duration-300; }
-      .form-label { @apply block text-sm font-semibold text-slate-700 mb-2; }
+
+    <style type="text/tailwindcss">
+      .navbar-fixed {
+        @apply fixed z-[9999] bg-white bg-opacity-80 backdrop-blur-sm shadow-md transition duration-300;
+      }
+      .form-input {
+        @apply w-full bg-white text-slate-800 border-2 border-slate-300 rounded-lg p-3 focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500 transition duration-300;
+      }
+      .form-label {
+        @apply block text-sm font-semibold text-slate-700 mb-2;
+      }
     </style>
   </head>
 
   <body class="font-sans text-slate-800 bg-slate-50">
-    <header id="header" class="bg-transparent absolute top-0 left-0 w-full flex items-center z-10 transition duration-300">
+    <header
+      id="header"
+      class="bg-transparent absolute top-0 left-0 w-full flex items-center z-10 transition duration-300"
+    >
       <div class="container mx-auto">
         <div class="flex items-center justify-between relative px-4">
           <div class="px-4">
-            <a href="index.html" class="font-bold text-2xl text-teal-600 block py-6">SI <span class="text-slate-900">BanTal</span></a>
+            <a
+              href="index.html"
+              class="font-bold text-2xl text-teal-600 block py-6"
+              >SI <span class="text-slate-900">BanTal</span></a
+            >
           </div>
           <div class="flex items-center px-4">
-            <button id="hamburger" name="hamburger" type="button" class="block absolute right-4 lg:hidden">
+            <button
+              id="hamburger"
+              name="hamburger"
+              type="button"
+              class="block absolute right-4 lg:hidden"
+            >
               <span class="w-[30px] h-[2px] my-2 block bg-slate-800"></span>
               <span class="w-[30px] h-[2px] my-2 block bg-slate-800"></span>
               <span class="w-[30px] h-[2px] my-2 block bg-slate-800"></span>
             </button>
-            <nav id="nav-menu" class="hidden absolute py-5 bg-white shadow-lg rounded-lg max-w-[250px] w-full right-4 top-full lg:block lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none">
+            <nav
+              id="nav-menu"
+              class="hidden absolute py-5 bg-white shadow-lg rounded-lg max-w-[250px] w-full right-4 top-full lg:block lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none"
+            >
               <ul class="block lg:flex">
-                <li class="group"><a href="index.html" class="text-base text-slate-700 py-2 mx-8 flex group-hover:text-teal-500 transition">Dashboard</a></li>
-                <li class="group"><a href="about.html" class="text-base text-slate-700 py-2 mx-8 flex group-hover:text-teal-500 transition">Tentang Sistem</a></li>
-                <li class="group"><a href="portofolio.html" class="text-base text-slate-700 py-2 mx-8 flex group-hover:text-teal-500 transition">Program Bantuan</a></li>
-                <li class="group"><a href="contact.html" class="text-base font-semibold text-teal-500 py-2 mx-8 flex">Pengajuan Bantuan</a></li>
+                <li class="group">
+                  <a
+                    href="index.html"
+                    class="text-base text-slate-700 py-2 mx-8 flex group-hover:text-teal-500 transition"
+                    >Dashboard</a
+                  >
+                </li>
+                <li class="group">
+                  <a
+                    href="about.html"
+                    class="text-base text-slate-700 py-2 mx-8 flex group-hover:text-teal-500 transition"
+                    >Tentang Sistem</a
+                  >
+                </li>
+                <li class="group">
+                  <a
+                    href="portofolio.html"
+                    class="text-base text-slate-700 py-2 mx-8 flex group-hover:text-teal-500 transition"
+                    >Program Bantuan</a
+                  >
+                </li>
+                <li class="group">
+                  <a
+                    href="contact.html"
+                    class="text-base font-semibold text-teal-500 py-2 mx-8 flex"
+                    >Pengajuan Bantuan</a
+                  >
+                </li>
               </ul>
             </nav>
           </div>
@@ -43,100 +91,219 @@
 
     <main class="pt-36 pb-20">
       <section class="container mx-auto px-4">
-        
         <div class="w-full text-center mb-10">
-          <h2 class="font-bold text-slate-900 text-3xl mb-4 lg:text-4xl">Layanan Bantuan Sosial</h2>
+          <h2 class="font-bold text-slate-900 text-3xl mb-4 lg:text-4xl">
+            Layanan Bantuan Sosial
+          </h2>
           <p class="font-medium text-slate-500 text-base max-w-2xl mx-auto">
-            Silakan pilih jenis layanan di bawah ini. Anda dapat bertindak sebagai donatur yang ingin memberikan bantuan, atau sebagai perwakilan desa yang mengajukan permintaan bantuan.
+            Silakan pilih jenis layanan di bawah ini. Anda dapat bertindak
+            sebagai donatur yang ingin memberikan bantuan, atau sebagai
+            perwakilan desa yang mengajukan permintaan bantuan.
           </p>
         </div>
 
         <div class="flex flex-wrap justify-center gap-4 mb-12">
-          <button id="btn-pengajuan" class="px-6 py-3 rounded-full bg-teal-500 text-white font-semibold shadow-lg hover:bg-teal-600 transition">
+          <button
+            id="btn-pengajuan"
+            class="px-6 py-3 rounded-full bg-teal-500 text-white font-semibold shadow-lg hover:bg-teal-600 transition"
+          >
             Pihak Swasta/Negeri (Beri Bantuan)
           </button>
-          <button id="btn-permintaan" class="px-6 py-3 rounded-full bg-white text-slate-700 font-semibold shadow-md hover:bg-slate-100 transition border border-slate-200">
+          <button
+            id="btn-permintaan"
+            class="px-6 py-3 rounded-full bg-white text-slate-700 font-semibold shadow-md hover:bg-slate-100 transition border border-slate-200"
+          >
             Perangkat Desa (Minta Bantuan)
           </button>
         </div>
 
-        <div class="max-w-3xl mx-auto bg-white p-8 rounded-2xl shadow-xl border-t-4 border-teal-500">
-          
+        <div
+          class="max-w-3xl mx-auto bg-white p-8 rounded-2xl shadow-xl border-t-4 border-teal-500"
+        >
           <div id="form-pengajuan-container" class="block">
-            <h3 class="text-2xl font-bold text-slate-900 mb-2">Formulir Penawaran Bantuan</h3>
-            <p class="text-sm text-slate-500 mb-6 pb-4 border-b">Bagi instansi pemerintah atau swasta yang ingin menyalurkan bantuan melalui SI BanTal.</p>
-            
+            <h3 class="text-2xl font-bold text-slate-900 mb-2">
+              Formulir Penawaran Bantuan
+            </h3>
+            <p class="text-sm text-slate-500 mb-6 pb-4 border-b">
+              Bagi instansi pemerintah atau swasta yang ingin menyalurkan
+              bantuan melalui SI BanTal.
+            </p>
+
             <form id="formPenawaran">
               <div class="mb-4">
-                <label for="nama_instansi" class="form-label">Nama Instansi / Perusahaan / Komunitas:</label><br>
-                <input type="text" id="nama_instansi" class="form-input" required placeholder="Contoh: PT. ABC" />
+                <label for="nama_instansi" class="form-label"
+                  >Nama Instansi / Perusahaan / Komunitas:</label
+                >
+                <input
+                  type="text"
+                  id="nama_instansi"
+                  class="form-input"
+                  required
+                  placeholder="Contoh: PT. ABC"
+                />
               </div>
-              <div class="mb-4">
-                <label for="pj_donatur" class="form-label">Nama Penanggung Jawab:</label><br>
-                <input type="text" id="pj_donatur" class="form-input" required placeholder="Contoh: Budi Santoso" />
-              </div>
-              <div class="mb-4">
-                <label for="jabatan_donatur" class="form-label">Jabatan Penanggung Jawab:</label><br>
-                <input type="text" id="jabatan_donatur" class="form-input" required placeholder="Contoh: Kepala Seksi" />
-              </div>
+
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                 <div>
-                  <label for="kontak_donatur" class="form-label">Nomor Kontak / WhatsApp:</label>
-                  <input type="text" id="kontak_donatur" class="form-input" required placeholder="Contoh: 081234567890" />
+                  <label for="pj_donatur" class="form-label"
+                    >Nama Penanggung Jawab:</label
+                  >
+                  <input
+                    type="text"
+                    id="pj_donatur"
+                    class="form-input"
+                    required
+                    placeholder="Contoh: Budi Santoso"
+                  />
                 </div>
                 <div>
-                  <label for="jenis_penawaran" class="form-label">Bentuk Bantuan:</label><br>
+                  <label for="jabatan_donatur" class="form-label"
+                    >Jabatan Penanggung Jawab:</label
+                  >
+                  <input
+                    type="text"
+                    id="jabatan_donatur"
+                    class="form-input"
+                    required
+                    placeholder="Contoh: Kepala Seksi"
+                  />
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                <div>
+                  <label for="kontak_donatur" class="form-label"
+                    >Nomor Kontak / WhatsApp:</label
+                  >
+                  <input
+                    type="text"
+                    id="kontak_donatur"
+                    class="form-input"
+                    required
+                    placeholder="Contoh: 081234567890"
+                  />
+                </div>
+                <div>
+                  <label for="jenis_penawaran" class="form-label"
+                    >Bentuk Bantuan:</label
+                  >
                   <select id="jenis_penawaran" class="form-input" required>
                     <option value="">-- Pilih Bentuk Bantuan --</option>
                     <option value="dana">Dana / Uang Tunai</option>
                     <option value="barang">Barang / Sembako</option>
                     <option value="jasa">Jasa / Pelatihan</option>
-                    <option value="infrastruktur">Material Infrastruktur</option>
+                    <option value="infrastruktur">
+                      Material Infrastruktur
+                    </option>
                   </select>
                 </div>
               </div>
+
               <div class="mb-6">
-                <label for="detail_bantuan" class="form-label">Detail Bantuan (Kuantitas, Nominal, Syarat, dll):</label>
-                <textarea id="detail_bantuan" rows="4" class="form-input" required placeholder="Contoh: 100 paket sembako senilai Rp 150.000/paket untuk disalurkan bulan depan."></textarea>
+                <label for="detail_bantuan" class="form-label"
+                  >Detail Bantuan (Kuantitas, Nominal, Syarat, dll):</label
+                >
+                <textarea
+                  id="detail_bantuan"
+                  rows="4"
+                  class="form-input"
+                  required
+                  placeholder="Contoh: 100 paket sembako senilai Rp 150.000/paket untuk disalurkan bulan depan."
+                ></textarea>
               </div>
+
               <div class="mb-8">
-              <label class="block text-sm font-semibold text-slate-700 mb-2">Unggah Surat Keterangan Pemberian Bantuan (Maks 2MB)</label>
-              <input type="file" class="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-teal-50 file:text-teal-700 hover:file:bg-teal-100 transition" />
-            </div>
-              <button type="submit" class="w-full bg-teal-500 text-white font-bold py-3 rounded-lg hover:bg-teal-600 transition shadow-lg">Kirim Penawaran Bantuan</button>
+                <label class="block text-sm font-semibold text-slate-700 mb-2"
+                  >Unggah Surat Keterangan Pemberian Bantuan (Maks 2MB)</label
+                >
+                <input
+                  type="file"
+                  class="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-teal-50 file:text-teal-700 hover:file:bg-teal-100 transition"
+                />
+              </div>
+
+              <button
+                type="submit"
+                class="w-full bg-teal-500 text-white font-bold py-3 rounded-lg hover:bg-teal-600 transition shadow-lg"
+              >
+                Kirim Penawaran Bantuan
+              </button>
             </form>
           </div>
 
           <div id="form-permintaan-container" class="hidden">
-            <h3 class="text-2xl font-bold text-slate-900 mb-2">Formulir Permintaan Bantuan</h3>
-            <div class="bg-amber-50 border-l-4 border-amber-400 p-4 mb-6 rounded-r-lg">
+            <h3 class="text-2xl font-bold text-slate-900 mb-2">
+              Formulir Permintaan Bantuan
+            </h3>
+            <div
+              class="bg-amber-50 border-l-4 border-amber-400 p-4 mb-6 rounded-r-lg"
+            >
               <h4 class="font-bold text-amber-800 text-sm">PERHATIKAN!</h4>
               <ul class="list-disc list-inside text-xs text-amber-700 mt-1">
-                <li>Pengajuan ini HANYA dapat dilakukan oleh perwakilan resmi Perangkat Desa.</li>
-                <li>Data yang masuk akan diverifikasi. Segala informasi palsu dapat diusut.</li>
+                <li>
+                  Pengajuan ini HANYA dapat dilakukan oleh perwakilan resmi
+                  Perangkat Desa.
+                </li>
+                <li>
+                  Data yang masuk akan diverifikasi. Segala informasi palsu
+                  dapat diusut.
+                </li>
               </ul>
             </div>
 
             <form id="formPermintaan">
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                 <div>
-                  <label for="nama_pj" class="form-label">Nama Perangkat Desa (Pemohon):</label>
-                  <input type="text" id="nama_pj" class="form-input" required placeholder="Contoh: Budi Santoso"/>
+                  <label for="nama_pj" class="form-label"
+                    >Nama Perangkat Desa (Pemohon):</label
+                  >
+                  <input
+                    type="text"
+                    id="nama_pj"
+                    class="form-input"
+                    required
+                    placeholder="Contoh: Budi Santoso"
+                  />
                 </div>
                 <div>
-                  <label for="jabatan" class="form-label">Jabatan di Desa:</label>
-                  <input type="text" id="jabatan" class="form-input" placeholder="Contoh: Kepala Desa, Sekdes, dll" required />
+                  <label for="jabatan" class="form-label"
+                    >Jabatan di Desa:</label
+                  >
+                  <input
+                    type="text"
+                    id="jabatan"
+                    class="form-input"
+                    placeholder="Contoh: Kepala Desa, Sekdes, dll"
+                    required
+                  />
                 </div>
-              </div><br>
-              
+              </div>
+
               <div class="mb-4">
-                <label for="target_bantuan" class="form-label">Target Bantuan (Pilih Salah Satu):</label>
+                <label for="target_bantuan" class="form-label"
+                  >Target Bantuan (Pilih Salah Satu):</label
+                >
                 <select id="target_bantuan" class="form-input" required>
                   <option value="">-- Pilih Target --</option>
-                  <option value="warga">Individu / Keluarga (Warga Desa)</option>
+                  <option value="warga">
+                    Individu / Keluarga (Warga Desa)
+                  </option>
                   <option value="fasilitas">Fasilitas Umum Desa</option>
                 </select>
-              </div><br>
+              </div>
+
+              <div id="jumlah_kk_container" class="mb-4 hidden">
+                <label for="jumlah_kk" class="form-label"
+                  >Jumlah Kepala Keluarga (KK) yang Membutuhkan:</label
+                >
+                <input
+                  type="number"
+                  id="jumlah_kk"
+                  class="form-input"
+                  placeholder="Contoh: 50"
+                  min="1"
+                />
+              </div>
 
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                 <div>
@@ -150,28 +317,55 @@
                 </div>
                 <div>
                   <label for="kota" class="form-label">Kota/Kabupaten:</label>
-                  <input type="text" id="kota" class="form-input" placeholder="Contoh: Kota Surabaya" />
+                  <input
+                    type="text"
+                    id="kota"
+                    class="form-input"
+                    placeholder="Contoh: Kota Surabaya"
+                    required
+                  />
                 </div>
                 <div>
                   <label for="kecamatan" class="form-label">Kecamatan:</label>
-                  <input type="text" id="kecamatan" class="form-input" placeholder="Contoh: Kecamatan Asemrowo" required />
+                  <input
+                    type="text"
+                    id="kecamatan"
+                    class="form-input"
+                    placeholder="Contoh: Kecamatan Asemrowo"
+                    required
+                  />
                 </div>
                 <div>
                   <label for="desa" class="form-label">Nama Desa:</label>
-                  <input type="text" id="desa" class="form-input" placeholder="Contoh: Desa Asemrowo" required />
+                  <input
+                    type="text"
+                    id="desa"
+                    class="form-input"
+                    placeholder="Contoh: Desa Asemrowo"
+                    required
+                  />
                 </div>
-              </div><br>
+              </div>
 
               <div class="mb-8">
-              <label class="block text-sm font-semibold text-slate-700 mb-2">Unggah Foto KTP / KK / Surat Keterangan Tidak Mampu (Maks 2MB)</label>
-              <input type="file" class="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-teal-50 file:text-teal-700 hover:file:bg-teal-100 transition" />
-            </div>
+                <label class="block text-sm font-semibold text-slate-700 mb-2"
+                  >Unggah Foto KTP / KK / Surat Keterangan Tidak Mampu (Maks
+                  2MB)</label
+                >
+                <input
+                  type="file"
+                  class="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-teal-50 file:text-teal-700 hover:file:bg-teal-100 transition"
+                />
+              </div>
 
-
-              <button type="submit" class="w-full bg-teal-500 text-white font-bold py-3 rounded-lg hover:bg-teal-600 transition shadow-lg">Kirim Permintaan Bantuan</button>
+              <button
+                type="submit"
+                class="w-full bg-teal-500 text-white font-bold py-3 rounded-lg hover:bg-teal-600 transition shadow-lg"
+              >
+                Kirim Permintaan Bantuan
+              </button>
             </form>
           </div>
-
         </div>
       </section>
     </main>
@@ -179,66 +373,84 @@
     <footer class="bg-slate-100 py-12">
       <div class="container mx-auto px-4 text-center">
         <p class="text-slate-400 text-sm">
-          &copy; 2026 <span class="text-teal-500 font-semibold">SI BanTal</span>. Seluruh informasi data bersifat transparan dan dapat dipertanggungjawabkan.
+          &copy; 2026
+          <span class="text-teal-500 font-semibold">SI BanTal</span>. Seluruh
+          informasi data bersifat transparan dan dapat dipertanggungjawabkan.
         </p>
       </div>
     </footer>
 
     <script>
       // Toggle Navbar
-      const hamburger = document.querySelector('#hamburger');
-      const navMenu = document.querySelector('#nav-menu');
-      const header = document.querySelector('#header');
+      const hamburger = document.querySelector("#hamburger");
+      const navMenu = document.querySelector("#nav-menu");
+      const header = document.querySelector("#header");
 
-      hamburger.addEventListener('click', () => {
-        navMenu.classList.toggle('hidden');
+      hamburger.addEventListener("click", () => {
+        navMenu.classList.toggle("hidden");
       });
 
       // Navbar Scroll
-      window.onscroll = function() {
+      window.onscroll = function () {
         if (window.pageYOffset > 0) {
-          header.classList.add('navbar-fixed');
-          header.classList.remove('absolute');
+          header.classList.add("navbar-fixed");
+          header.classList.remove("absolute");
         } else {
-          header.classList.remove('navbar-fixed');
-          header.classList.add('absolute');
+          header.classList.remove("navbar-fixed");
+          header.classList.add("absolute");
         }
       };
 
       // Toggle Tabs Form
-      const btnPengajuan = document.getElementById('btn-pengajuan');
-      const btnPermintaan = document.getElementById('btn-permintaan');
-      const formPengajuan = document.getElementById('form-pengajuan-container');
-      const formPermintaan = document.getElementById('form-permintaan-container');
+      const btnPengajuan = document.getElementById("btn-pengajuan");
+      const btnPermintaan = document.getElementById("btn-permintaan");
+      const formPengajuan = document.getElementById("form-pengajuan-container");
+      const formPermintaan = document.getElementById(
+        "form-permintaan-container",
+      );
 
-      btnPengajuan.addEventListener('click', () => {
-        // Aktifkan tab Pengajuan
-        formPengajuan.classList.remove('hidden');
-        formPengajuan.classList.add('block');
-        formPermintaan.classList.remove('block');
-        formPermintaan.classList.add('hidden');
-        
-        // Ubah styling tombol
-        btnPengajuan.classList.replace('bg-white', 'bg-teal-500');
-        btnPengajuan.classList.replace('text-slate-700', 'text-white');
-        
-        btnPermintaan.classList.replace('bg-teal-500', 'bg-white');
-        btnPermintaan.classList.replace('text-white', 'text-slate-700');
+      btnPengajuan.addEventListener("click", () => {
+        formPengajuan.classList.remove("hidden");
+        formPengajuan.classList.add("block");
+        formPermintaan.classList.remove("block");
+        formPermintaan.classList.add("hidden");
+
+        btnPengajuan.classList.replace("bg-white", "bg-teal-500");
+        btnPengajuan.classList.replace("text-slate-700", "text-white");
+
+        btnPermintaan.classList.replace("bg-teal-500", "bg-white");
+        btnPermintaan.classList.replace("text-white", "text-slate-700");
       });
 
-      btnPermintaan.addEventListener('click', () => {
-        // Aktifkan tab Permintaan
-        formPermintaan.classList.remove('hidden');
-        formPermintaan.classList.add('block');
-        formPengajuan.classList.remove('block');
-        formPengajuan.classList.add('hidden');
-        
-        // Ubah styling tombol
-        btnPermintaan.classList.replace('bg-white', 'bg-teal-500');
-        btnPermintaan.classList.replace('text-slate-700', 'text-white');
-        
-        btnPengajuan.classList.replace('bg-teal-500', 'bg-white');
-        btnPengajuan.classList.replace('text-white', 'text-slate-700');
+      btnPermintaan.addEventListener("click", () => {
+        formPermintaan.classList.remove("hidden");
+        formPermintaan.classList.add("block");
+        formPengajuan.classList.remove("block");
+        formPengajuan.classList.add("hidden");
+
+        btnPermintaan.classList.replace("bg-white", "bg-teal-500");
+        btnPermintaan.classList.replace("text-slate-700", "text-white");
+
+        btnPengajuan.classList.replace("bg-teal-500", "bg-white");
+        btnPengajuan.classList.replace("text-white", "text-slate-700");
+      });
+
+      // INI JAVASCRIPT BARU UNTUK INPUT JUMLAH KK
+      const targetBantuanSelect = document.getElementById("target_bantuan");
+      const jumlahKkContainer = document.getElementById("jumlah_kk_container");
+      const jumlahKkInput = document.getElementById("jumlah_kk");
+
+      targetBantuanSelect.addEventListener("change", function () {
+        if (this.value === "warga") {
+          // Jika pilih Warga, tampilkan input dan buat jadi wajib diisi (required)
+          jumlahKkContainer.classList.remove("hidden");
+          jumlahKkInput.setAttribute("required", "true");
+        } else {
+          // Jika pilih Fasilitas atau tidak pilih apa-apa, sembunyikan dan hapus required
+          jumlahKkContainer.classList.add("hidden");
+          jumlahKkInput.removeAttribute("required");
+          jumlahKkInput.value = ""; // Kosongkan isiannya
+        }
       });
     </script>
   </body>
