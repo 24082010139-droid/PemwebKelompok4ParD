@@ -61,6 +61,7 @@ $is_auth_page = true;
     <div class="absolute bottom-[-10%] left-[-10%] w-[35rem] h-[35rem] bg-amber-200/50 rounded-full mix-blend-multiply filter blur-[100px] opacity-70"></div>
     <div class="absolute top-[20%] left-[20%] w-[25rem] h-[25rem] bg-emerald-200/40 rounded-full mix-blend-multiply filter blur-[80px] opacity-60"></div>
   </div>
+  
   <div class="container mx-auto px-4 relative z-10">
     <div class="max-w-4xl mx-auto bg-white/90 backdrop-blur-sm rounded-2xl shadow-2xl overflow-hidden flex flex-col md:flex-row border border-white/50">
       
@@ -118,21 +119,41 @@ $is_auth_page = true;
             </div>
           </div>
 
-          <div>
-            <label class="block text-sm font-semibold text-slate-700 mb-1">Daftar Sebagai (Role)</label>
-            <select name="role" required class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 outline-none transition bg-slate-50 focus:bg-white cursor-pointer">
-              <option value="">-- Pilih Peran Anda --</option>
-              <option value="desa">Perwakilan Perangkat Desa (Pemohon)</option>
-              <option value="donatur">Lembaga Swasta/Negeri (Donatur)</option>
-            </select>
+          <div class="pt-2">
+            <label class="block text-sm font-semibold text-slate-700 mb-3">Daftar Sebagai (Role) *</label>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              
+              <label class="relative cursor-pointer group">
+                <input type="radio" name="role" value="desa" class="peer sr-only" required>
+                <div class="h-full rounded-xl border-2 border-slate-200 p-4 text-center hover:bg-slate-50 peer-checked:border-amber-500 peer-checked:bg-amber-50 transition duration-200">
+                  <div class="w-10 h-10 mx-auto bg-amber-100 text-amber-500 rounded-full flex items-center justify-center mb-2 peer-checked:bg-amber-500 peer-checked:text-white transition">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                  </div>
+                  <span class="block font-bold text-slate-800">Pemohon Bantuan</span>
+                  <span class="block text-xs text-slate-500 mt-1">Perangkat Desa</span>
+                </div>
+              </label>
+
+              <label class="relative cursor-pointer group">
+                <input type="radio" name="role" value="donatur" class="peer sr-only" required>
+                <div class="h-full rounded-xl border-2 border-slate-200 p-4 text-center hover:bg-slate-50 peer-checked:border-teal-500 peer-checked:bg-teal-50 transition duration-200">
+                  <div class="w-10 h-10 mx-auto bg-teal-100 text-teal-500 rounded-full flex items-center justify-center mb-2 peer-checked:bg-teal-500 peer-checked:text-white transition">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                  </div>
+                  <span class="block font-bold text-slate-800">Donatur</span>
+                  <span class="block text-xs text-slate-500 mt-1">Instansi Pemerintah / Swasta</span>
+                </div>
+              </label>
+
+            </div>
           </div>
 
-          <button type="submit" name="register" class="w-full bg-slate-900 text-white font-bold py-3 rounded-lg mt-6 hover:bg-teal-500 hover:shadow-lg transform transition duration-300">
+          <button type="submit" name="register" class="w-full bg-slate-900 text-white font-bold py-4 rounded-lg mt-8 hover:bg-teal-500 hover:shadow-lg transform transition duration-300">
             Daftar Sekarang
           </button>
         </form>
 
-        <p class="mt-6 text-center text-sm text-slate-500">
+        <p class="mt-8 text-center text-sm text-slate-500 border-t border-slate-100 pt-6">
           Sudah punya akun? <a href="login.php" class="text-teal-600 font-bold hover:underline">Masuk di sini</a>
         </p>
       </div>

@@ -1,3 +1,26 @@
+<?php 
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+// Menyesuaikan Tombol Utama berdasarkan Role
+$btn_link = 'login.php';
+$btn_text = 'Mulai Sekarang';
+
+if (isset($_SESSION['role'])) {
+    if ($_SESSION['role'] === 'desa') {
+        $btn_link = 'contact.php';
+        $btn_text = 'Mulai Pengajuan Bantuan';
+    } elseif ($_SESSION['role'] === 'donatur') {
+        $btn_link = 'contact.php';
+        $btn_text = 'Tawarkan Bantuan';
+    } elseif ($_SESSION['role'] === 'admin') {
+        $btn_link = 'dashboard-admin.php';
+        $btn_text = 'Buka Panel Admin';
+    }
+}
+?>
+
 <?php include 'components/header.php'; ?>
 
     <section id="home" class="pt-36 pb-20 bg-slate-50">
@@ -15,9 +38,11 @@
               Kelola dan pantau program bantuan sosial dengan mudah, transparan,
               dan tepat sasaran melalui layanan digital terpadu.
             </p>
-            <a href="contact.html" class="text-base font-semibold text-white bg-teal-500 py-3 px-8 rounded-full hover:shadow-lg hover:bg-teal-600 transition duration-300 ease-in-out">
-              Mulai Pengajuan
+            
+            <a href="<?= $btn_link ?>" class="text-base font-semibold text-white bg-teal-500 py-3 px-8 rounded-full hover:shadow-lg hover:bg-teal-600 transition duration-300 ease-in-out inline-block">
+              <?= $btn_text ?>
             </a>
+            
           </div>
           <div class="w-full self-end px-4 lg:w-1/2 mt-10 lg:mt-0">
             <div class="relative right-0">
@@ -51,4 +76,4 @@
       </div>
     </section>
 
-   <?php include 'components/footer.php'; ?>
+<?php include 'components/footer.php'; ?>

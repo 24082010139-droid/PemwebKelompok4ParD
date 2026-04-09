@@ -36,4 +36,16 @@ if ($cek_admin && mysqli_num_rows($cek_admin) == 0) {
     mysqli_query($conn, $query_insert_admin);
 }
 // ========================================================
+
+// ========================================================
+// AUTO CREATE TABLE: HISTORY PENYALURAN (Untuk Fitur Apply/Danai)
+// ========================================================
+$create_table_history = "CREATE TABLE IF NOT EXISTS history_penyaluran (
+    id INT(11) AUTO_INCREMENT PRIMARY KEY,
+    user_id INT(11) NOT NULL,
+    program_id INT(11) NOT NULL,
+    tipe_program VARCHAR(50) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)";
+mysqli_query($conn, $create_table_history);
 ?>

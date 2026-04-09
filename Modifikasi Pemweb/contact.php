@@ -88,18 +88,23 @@ if (isset($_POST['submit_desa'])) {
     
     <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-100">
       
-      <div class="bg-teal-500 p-8 text-center text-white relative overflow-hidden">
-        <div class="absolute top-0 left-0 w-full h-full bg-teal-600 opacity-20 transform -skew-y-3 origin-top-left z-0"></div>
-        <div class="relative z-10">
-            <?php if ($_SESSION['role'] === 'donatur'): ?>
+      <?php if ($_SESSION['role'] === 'donatur'): ?>
+          <div class="bg-teal-500 p-8 text-center text-white relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-full bg-teal-600 opacity-20 transform -skew-y-3 origin-top-left z-0"></div>
+            <div class="relative z-10">
                 <h2 class="text-3xl font-bold mb-2">Form Penawaran Bantuan</h2>
                 <p class="text-teal-100">Lengkapi detail donasi yang ingin disalurkan untuk membantu desa.</p>
-            <?php elseif ($_SESSION['role'] === 'desa'): ?>
+            </div>
+          </div>
+      <?php elseif ($_SESSION['role'] === 'desa'): ?>
+          <div class="bg-amber-500 p-8 text-center text-white relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-full bg-amber-600 opacity-20 transform -skew-y-3 origin-top-left z-0"></div>
+            <div class="relative z-10">
                 <h2 class="text-3xl font-bold mb-2">Form Pengajuan Bantuan</h2>
-                <p class="text-teal-100">Ajukan kebutuhan bantuan sosial (Warga/Fasilitas) untuk desa Anda.</p>
-            <?php endif; ?>
-        </div>
-      </div>
+                <p class="text-amber-100">Ajukan kebutuhan bantuan sosial (Warga/Fasilitas) untuk desa Anda.</p>
+            </div>
+          </div>
+      <?php endif; ?>
 
       <div class="p-8 md:p-12">
         <?php if($success): ?>
@@ -110,7 +115,7 @@ if (isset($_POST['submit_desa'])) {
         <?php endif; ?>
 
         <?php if ($_SESSION['role'] === 'donatur'): ?>
-            <form action="" method="POST" enctype="multipart/form-data" class="space-y-6">
+            <form action="" method="POST" enctype="multipart/form-data" class="space-y-6" onsubmit="return validasiForm(event)">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                         <label class="block text-sm font-semibold text-slate-700 mb-2">Nama Instansi/Perusahaan</label>
@@ -143,7 +148,7 @@ if (isset($_POST['submit_desa'])) {
 
                 <div>
                     <label class="block text-sm font-semibold text-slate-700 mb-2">Detail Bantuan</label>
-                    <textarea name="detail_bantuan" rows="4" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 outline-none bg-slate-50 focus:bg-white transition" required></textarea>
+                    <textarea id="detail_bantuan" name="detail_bantuan" rows="4" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 outline-none bg-slate-50 focus:bg-white transition" placeholder="Minimal 20 Karakter..." required></textarea>
                 </div>
 
                 <div>
@@ -158,40 +163,40 @@ if (isset($_POST['submit_desa'])) {
             </form>
 
         <?php elseif ($_SESSION['role'] === 'desa'): ?>
-            <form action="" method="POST" enctype="multipart/form-data" class="space-y-6">
+            <form action="" method="POST" enctype="multipart/form-data" class="space-y-6" onsubmit="return validasiForm(event)">
                 
-                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 mb-6">
-                    <h4 class="font-bold text-slate-800 mb-4 border-b pb-2">Informasi Penanggung Jawab</h4>
+                <div class="bg-amber-50/50 p-4 rounded-xl border border-amber-200 mb-6">
+                    <h4 class="font-bold text-amber-900 mb-4 border-b border-amber-200 pb-2">Informasi Penanggung Jawab</h4>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
                             <label class="block text-sm font-semibold text-slate-700 mb-2">Nama Penanggung Jawab</label>
-                            <input type="text" name="nama_pj" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 outline-none bg-white transition" required>
+                            <input type="text" name="nama_pj" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-amber-500 outline-none bg-white transition" required>
                         </div>
                         <div>
                             <label class="block text-sm font-semibold text-slate-700 mb-2">Jabatan</label>
-                            <input type="text" name="jabatan" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 outline-none bg-white transition" required>
+                            <input type="text" name="jabatan" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-amber-500 outline-none bg-white transition" required>
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 mb-6">
-                    <h4 class="font-bold text-slate-800 mb-4 border-b pb-2">Informasi Wilayah Desa</h4>
+                <div class="bg-amber-50/50 p-4 rounded-xl border border-amber-200 mb-6">
+                    <h4 class="font-bold text-amber-900 mb-4 border-b border-amber-200 pb-2">Informasi Wilayah Desa</h4>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
                             <label class="block text-sm font-semibold text-slate-700 mb-2">Provinsi</label>
-                            <input type="text" name="provinsi" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 outline-none bg-white transition" required>
+                            <input type="text" name="provinsi" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-amber-500 outline-none bg-white transition" required>
                         </div>
                         <div>
                             <label class="block text-sm font-semibold text-slate-700 mb-2">Kota / Kabupaten</label>
-                            <input type="text" name="kota" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 outline-none bg-white transition" required>
+                            <input type="text" name="kota" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-amber-500 outline-none bg-white transition" required>
                         </div>
                         <div>
                             <label class="block text-sm font-semibold text-slate-700 mb-2">Kecamatan</label>
-                            <input type="text" name="kecamatan" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 outline-none bg-white transition" required>
+                            <input type="text" name="kecamatan" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-amber-500 outline-none bg-white transition" required>
                         </div>
                         <div>
                             <label class="block text-sm font-semibold text-slate-700 mb-2">Nama Desa / Kelurahan</label>
-                            <input type="text" name="desa" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 outline-none bg-white transition" required>
+                            <input type="text" name="desa" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-amber-500 outline-none bg-white transition" required>
                         </div>
                     </div>
                 </div>
@@ -199,7 +204,7 @@ if (isset($_POST['submit_desa'])) {
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                         <label class="block text-sm font-semibold text-slate-700 mb-2">Target Bantuan</label>
-                        <select name="target_bantuan" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 outline-none bg-slate-50 focus:bg-white transition" required>
+                        <select name="target_bantuan" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-amber-500 outline-none bg-slate-50 focus:bg-white transition" required>
                             <option value="">-- Pilih Target --</option>
                             <option value="warga">Warga Terdampak</option>
                             <option value="fasilitas">Fasilitas Umum</option>
@@ -207,23 +212,23 @@ if (isset($_POST['submit_desa'])) {
                     </div>
                     <div>
                         <label class="block text-sm font-semibold text-slate-700 mb-2">Jumlah KK</label>
-                        <input type="number" name="jumlah_kk" placeholder="Kosongkan jika fasilitas" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 outline-none bg-slate-50 focus:bg-white transition">
+                        <input type="number" id="jumlah_kk" name="jumlah_kk" placeholder="Kosongkan jika fasilitas" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-amber-500 outline-none bg-slate-50 focus:bg-white transition">
                     </div>
                 </div>
                 
                 <div>
                     <label class="block text-sm font-semibold text-slate-700 mb-2">Alasan Permintaan</label>
-                    <textarea name="alasan" rows="5" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 outline-none bg-slate-50 focus:bg-white transition" required></textarea>
+                    <textarea id="alasan" name="alasan" rows="5" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-amber-500 outline-none bg-slate-50 focus:bg-white transition" placeholder="Minimal 20 Karakter..." required></textarea>
                 </div>
 
                 <div>
                     <label class="block text-sm font-semibold text-slate-700 mb-2">Unggah Dokumen (Foto Kondisi/Surat Pengajuan)</label>
-                    <input type="file" name="dokumen_desa" accept=".pdf,.jpg,.jpeg,.png" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 outline-none bg-slate-50 focus:bg-white transition cursor-pointer" required>
+                    <input type="file" name="dokumen_desa" accept=".pdf,.jpg,.jpeg,.png" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-amber-500 outline-none bg-slate-50 focus:bg-white transition cursor-pointer" required>
                     <p class="text-xs text-slate-500 mt-1">*Unggah file PDF, JPG, atau PNG.</p>
                 </div>
                 
                 <div class="pt-4">
-                    <button type="submit" name="submit_desa" class="w-full bg-teal-500 hover:bg-teal-600 text-white font-bold py-4 rounded-lg shadow-lg hover:shadow-teal-500/30 transform transition duration-300">Ajukan Permintaan Bantuan</button>
+                    <button type="submit" name="submit_desa" class="w-full bg-amber-500 hover:bg-amber-600 text-white font-bold py-4 rounded-lg shadow-lg hover:shadow-amber-500/30 transform transition duration-300">Ajukan Permintaan Bantuan</button>
                 </div>
             </form>
         <?php endif; ?>
@@ -232,5 +237,48 @@ if (isset($_POST['submit_desa'])) {
     </div>
   </div>
 </main>
+
+<script>
+function validasiForm(event) {
+    const role = "<?= $_SESSION['role'] ?>";
+
+    // Validasi khusus form Desa
+    if (role === 'desa') {
+        const inputAlasan = document.getElementById('alasan');
+        const inputJumlahKk = document.getElementById('jumlah_kk');
+        
+        // Cek Panjang Alasan
+        if (inputAlasan.value.trim().length < 20) {
+            alert("⚠️ Validasi Gagal:\nPenjelasan kondisi/alasan desa harus diisi minimal 20 karakter agar jelas.");
+            inputAlasan.focus();
+            event.preventDefault(); // Cegah form terkirim
+            return false;
+        }
+
+        // Cek Jumlah KK (Tidak boleh minus atau 0 jika diisi)
+        if (inputJumlahKk.value !== "" && parseInt(inputJumlahKk.value) <= 0) {
+            alert("⚠️ Validasi Gagal:\nJumlah KK terdampak harus lebih dari 0.");
+            inputJumlahKk.focus();
+            event.preventDefault(); 
+            return false;
+        }
+    } 
+    
+    // Validasi khusus form Donatur
+    else if (role === 'donatur') {
+        const inputDetail = document.getElementById('detail_bantuan');
+
+        // Cek Panjang Detail Bantuan
+        if (inputDetail.value.trim().length < 20) {
+            alert("⚠️ Validasi Gagal:\nDetail bantuan harus diisi minimal 20 karakter agar spesifik.");
+            inputDetail.focus();
+            event.preventDefault(); // Cegah form terkirim
+            return false;
+        }
+    }
+
+    return true; 
+}
+</script>
 
 <?php include 'components/footer.php'; ?>

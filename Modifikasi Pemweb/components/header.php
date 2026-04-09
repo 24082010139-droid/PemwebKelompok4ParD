@@ -1,3 +1,32 @@
+<?php
+// Menentukan link dashboard dan status login berdasarkan session
+$link_dashboard = 'index.php'; // Default jika belum login
+$is_logged_in = isset($_SESSION['role']); // Cek apakah user sudah login
+
+if ($is_logged_in) {
+    if ($_SESSION['role'] === 'desa') {
+        $link_dashboard = 'dashboard-desa.php';
+    } elseif ($_SESSION['role'] === 'donatur') {
+        $link_dashboard = 'dashboard-donatur.php';
+    } elseif ($_SESSION['role'] === 'admin') {
+        $link_dashboard = 'dashboard-admin.php';
+    }
+}
+
+// ========================================================
+// LOGIKA ACTIVE NAVBAR DINAMIS
+// ========================================================
+$current_page = basename($_SERVER['PHP_SELF']); // Ambil nama file saat ini (misal: contact.php)
+
+$class_active = "font-bold text-teal-500";
+$class_inactive = "font-medium text-slate-800";
+
+// Cek masing-masing menu. (Jika index.php, maka tidak ada satupun yang true, jadi tidak ada yang menyala)
+$nav_dashboard = in_array($current_page, ['dashboard-admin.php', 'dashboard-desa.php', 'dashboard-donatur.php']) ? $class_active : $class_inactive;
+$nav_about = ($current_page == 'about.php') ? $class_active : $class_inactive;
+$nav_portofolio = ($current_page == 'portofolio.php') ? $class_active : $class_inactive;
+$nav_contact = ($current_page == 'contact.php') ? $class_active : $class_inactive;
+?>
 <!doctype html>
 <html lang="id" class="scroll-smooth">
   <head>
@@ -30,7 +59,7 @@
       <div class="container mx-auto">
         <div class="flex items-center justify-between relative px-4">
           <div class="px-4">
-            <a href="index.php" class="font-bold text-lg text-teal-500 block py-6">SI BanTal</a>
+            <a href="index.php" class="font-bold text-xl text-teal-500 block py-6 tracking-wide">SI BanTal</a>
           </div>
           <div class="flex items-center px-4">
             <button id="hamburger" name="hamburger" type="button" class="block absolute right-4 lg:hidden">
@@ -39,12 +68,27 @@
               <span class="hamburger-line transition duration-300 ease-in-out origin-bottom-left"></span>
             </button>
             <nav id="nav-menu" class="hidden absolute py-5 bg-white shadow-lg rounded-lg max-w-[250px] w-full right-4 top-full lg:block lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none">
-              <ul class="block lg:flex">
-                <li class="group"><a href="index.php" class="text-base font-semibold text-teal-500 py-2 mx-8 flex group-hover:text-teal-600">Dashboard</a></li>
-                <li class="group"><a href="about.php" class="text-base text-slate-800 py-2 mx-8 flex group-hover:text-teal-500">Tentang Sistem</a></li>
-                <li class="group"><a href="portofolio.php" class="text-base text-slate-800 py-2 mx-8 flex group-hover:text-teal-500">Program Bantuan</a></li>
-                <li class="group"><a href="contact.php" class="text-base text-slate-800 py-2 mx-8 flex group-hover:text-teal-500">Pengajuan Bantuan</a></li>
+              
+              <ul class="block lg:flex lg:items-center">
+                <li class="group"><a href="<?= $link_dashboard ?>" class="text-base py-2 mx-8 flex group-hover:text-teal-500 transition <?= $nav_dashboard ?>">Dashboard</a></li>
+                <li class="group"><a href="about.php" class="text-base py-2 mx-8 flex group-hover:text-teal-500 transition <?= $nav_about ?>">Tentang Sistem</a></li>
+                <li class="group"><a href="portofolio.php" class="text-base py-2 mx-8 flex group-hover:text-teal-500 transition <?= $nav_portofolio ?>">Program Bantuan</a></li>
+                <li class="group"><a href="contact.php" class="text-base py-2 mx-8 flex group-hover:text-teal-500 transition <?= $nav_contact ?>">Pengajuan Bantuan</a></li>
+                
+                <li class="group my-4 lg:my-0 px-8 lg:px-0 lg:ml-2">
+                    <?php if($is_logged_in): ?>
+                        <a href="logout.php" class="text-base font-bold text-white bg-red-500 py-2.5 px-6 rounded-full hover:shadow-lg hover:shadow-red-500/30 hover:bg-red-600 transition duration-300 ease-in-out block text-center lg:inline-block">
+                            Logout
+                        </a>
+                    <?php else: ?>
+                        <a href="login.php" class="text-base font-bold text-white bg-teal-500 py-2.5 px-6 rounded-full hover:shadow-lg hover:shadow-teal-500/30 hover:bg-teal-600 transition duration-300 ease-in-out block text-center lg:inline-block">
+                            Login
+                        </a>
+                    <?php endif; ?>
+                </li>
+                
               </ul>
+
             </nav>
           </div>
         </div>

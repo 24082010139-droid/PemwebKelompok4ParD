@@ -1,6 +1,13 @@
+<?php
+// Pastikan session berjalan agar header.php bisa mendeteksi role & status login
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+?>
+
 <?php include 'components/header.php'; ?>
 
-<main class="pt-36 pb-16">
+<main class="pt-36 pb-16 min-h-screen">
   <section id="about">
     <div class="container mx-auto px-4">
       <div class="flex flex-wrap items-center">
