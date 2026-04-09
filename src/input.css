@@ -1,8 +1,7 @@
 @import "tailwindcss";
 
 /* PENTING: Memberitahu Tailwind v4 lokasi file HTML kamu agar class-nya terdeteksi */
-@source "../Modifikasi Pemweb/**/*.html";
-
+@source "../Modifikasi Pemweb/**/*.{html,php}";
 /* 1. Pengaturan Dasar Halaman */
 body {
   background-color: #f4f4f4;

@@ -1,38 +1,4 @@
-<!doctype html>
-<html lang="id" class="scroll-smooth">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Dashboard Sistem Informasi Bantuan Sosial Desa" />
-    <title>Dashboard - SI BanTal</title>
-    <link rel="stylesheet" href="../dist/output.css" />
-  </head>
-  <body class="font-sans text-slate-800 bg-slate-50">
-    
-    <header class="bg-transparent absolute top-0 left-0 w-full flex items-center z-10 transition duration-300">
-      <div class="container mx-auto">
-        <div class="flex items-center justify-between relative px-4">
-          <div class="px-4">
-            <a href="index.html" class="font-bold text-lg text-teal-500 block py-6">SI BanTal</a>
-          </div>
-          <div class="flex items-center px-4">
-            <button id="hamburger" name="hamburger" type="button" class="block absolute right-4 lg:hidden">
-              <span class="hamburger-line transition duration-300 ease-in-out origin-top-left"></span>
-              <span class="hamburger-line transition duration-300 ease-in-out"></span>
-              <span class="hamburger-line transition duration-300 ease-in-out origin-bottom-left"></span>
-            </button>
-            <nav id="nav-menu" class="hidden absolute py-5 bg-white shadow-lg rounded-lg max-w-[250px] w-full right-4 top-full lg:block lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none">
-              <ul class="block lg:flex">
-                <li class="group"><a href="index.html" class="text-base font-semibold text-teal-500 py-2 mx-8 flex group-hover:text-teal-600">Dashboard</a></li>
-                <li class="group"><a href="about.html" class="text-base text-slate-800 py-2 mx-8 flex group-hover:text-teal-500">Tentang Sistem</a></li>
-                <li class="group"><a href="portofolio.html" class="text-base text-slate-800 py-2 mx-8 flex group-hover:text-teal-500">Program Bantuan</a></li>
-                <li class="group"><a href="contact.html" class="text-base text-slate-800 py-2 mx-8 flex group-hover:text-teal-500">Pengajuan Bantuan</a></li>
-              </ul>
-            </nav>
-          </div>
-        </div>
-      </div>
-    </header>
+<?php include 'components/header.php'; ?>
 
     <section id="home" class="pt-36 pb-20 bg-slate-50">
       <div class="container mx-auto px-4">
@@ -85,14 +51,4 @@
       </div>
     </section>
 
-    <footer class="bg-slate-100 py-12">
-      <div class="container mx-auto px-4 text-center">
-        <p class="text-slate-400 text-sm">
-          &copy; 2026 <span class="text-teal-500 font-semibold">SI BanTal</span>. Seluruh informasi data bersifat transparan dan dapat dipertanggungjawabkan.
-        </p>
-      </div>
-    </footer>
-
-    <script src="script.js"></script>
-  </body>
-</html>
+   <?php include 'components/footer.php'; ?>

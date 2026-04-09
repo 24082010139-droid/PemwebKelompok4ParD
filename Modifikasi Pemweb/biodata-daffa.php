@@ -1,56 +1,12 @@
-<!doctype html>
-<html lang="id" class="scroll-smooth">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Biodata Anggota - SI BanTal</title>
-
-    <link rel="stylesheet" href="../dist/output.css" />
-  </head>
-  <body class="font-sans text-slate-800 bg-slate-50">
-    <header
-      class="bg-transparent absolute top-0 left-0 w-full flex items-center z-10 transition duration-300"
-    >
-      <div class="container mx-auto">
-        <div class="flex items-center justify-between relative px-4">
-          <div class="px-4">
-            <a
-              href="index.html"
-              class="font-bold text-lg text-teal-500 block py-6"
-              >SI BanTal</a
-            >
-          </div>
-          <div class="flex items-center px-4">
-          
-          <button id="hamburger" name="hamburger" type="button" class="block absolute right-4 lg:hidden">
-            <span class="hamburger-line transition duration-300 ease-in-out origin-top-left"></span>
-            <span class="hamburger-line transition duration-300 ease-in-out"></span>
-            <span class="hamburger-line transition duration-300 ease-in-out origin-bottom-left"></span>
-          </button>
-
-          <nav id="nav-menu" class="hidden absolute py-5 bg-white shadow-lg rounded-lg max-w-[250px] w-full right-4 top-full lg:block lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none">
-            <ul class="block lg:flex">
-              <li class="group"><a href="index.html" class="text-base text-slate-800 py-2 mx-8 flex group-hover:text-teal-500">Dashboard</a></li>
-              <li class="group"><a href="about.html" class="text-base text-slate-800 py-2 mx-8 flex group-hover:text-teal-500">Tentang Sistem</a></li>
-              <li class="group"><a href="portofolio.html" class="text-base text-slate-800 py-2 mx-8 flex group-hover:text-teal-500">Program Bantuan</a></li>
-              <li class="group"><a href="contact.html" class="text-base text-slate-800 py-2 mx-8 flex group-hover:text-teal-500">Pengajuan Bantuan</a></li>
-            </ul>
-          </nav>
-          
-
-        </div>
-      </div>
-    </header>
+<?php include 'components/header.php'; ?>
 
     <section id="biodata" class="min-h-screen flex items-center pt-20 pb-10">
       <div class="container mx-auto">
         <div class="flex flex-wrap items-center">
-          <div
-            class="w-full mt-2 px-4 mb-10 lg:mb-0 lg:w-1/2 flex justify-center"
-          >
+          <div class="w-full mt-2 px-4 mb-10 lg:mb-0 lg:w-1/2 flex justify-center">
             <div class="relative">
               <img
-                src="foto_sarah.jpg"
+                src="foto_daffa.jpg"
                 alt="Foto Profil"
                 class="max-w-full mx-auto rounded-full shadow-xl w-64 h-64 lg:w-80 lg:h-80 object-cover border-4 border-teal-500"
               />
@@ -62,27 +18,25 @@
               Halo, perkenalkan saya
             </h2>
 
-            <h1
-              class="block font-bold text-slate-900 text-3xl lg:text-5xl mb-2"
-            >
-              Sarah Amelia Rachma
+            <h1 class="block font-bold text-slate-900 text-3xl lg:text-5xl mb-2">
+              Ananda Daffa Arrayan
             </h1>
 
             <h3 class="font-medium text-slate-500 text-lg mb-6">
-              Mahasiswa Sistem Informasi | NPM: 24082010139
+              Mahasiswa Sistem Informasi | NPM: 24082010149
             </h3>
 
             <p class="font-medium text-slate-400 mb-8 leading-relaxed">
               Saya adalah mahasiswa yang antusias dalam pengembangan web. Pada
               project modifikasi website SI BanTal (Sistem Informasi Bantuan
               Sosial) kelompok 4 ini, saya berkontribusi dalam perancangan
-              antarmuka dan penulisan kode HTML, CSS, JS agar tampilan lebih
-              modern dan responsif.
+              antarmuka dan penulisan kode HTML agar tampilan lebih modern dan
+              responsif.
             </p>
 
             <div class="flex items-center gap-3 ml-2">
               <a
-                href="https://instagram.com/srahrchm"
+                href="https://instagram.com/daparrayan"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="w-12 h-12 flex justify-center items-center rounded-full bg-slate-200 text-slate-600 hover:bg-teal-500 hover:text-white hover:scale-110 hover:shadow-md transition duration-300 ease-in-out"
@@ -102,7 +56,7 @@
               </a>
 
               <a
-                href="https://wa.me/6285645872978"
+                href="https://wa.me/6281352931980"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="w-12 h-12 flex justify-center items-center rounded-full bg-slate-200 text-slate-600 hover:bg-teal-500 hover:text-white hover:scale-110 hover:shadow-md transition duration-300 ease-in-out"
@@ -125,9 +79,5 @@
         </div>
       </div>
     </section>
-    <footer>
-      <p>&copy; 2026 SI BanTal - Sistem Informasi Bantuan Sosial</p>
-    </footer>
-    <script src="script.js"></script>
-  </body>
-</html>
+
+<?php include 'components/footer.php'; ?>
