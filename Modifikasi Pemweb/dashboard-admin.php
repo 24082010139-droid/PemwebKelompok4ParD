@@ -93,8 +93,6 @@ $count_donatur = mysqli_fetch_assoc($pending_donatur)['total'];
                 <span class="block text-xs text-slate-400">Antrean Donatur</span>
                 <span class="text-xl font-bold text-teal-400"><?= $count_donatur ?></span>
             </div>
-            
-           
         </div>
     </div> <?= $pesan ?>
 
@@ -153,6 +151,7 @@ $count_donatur = mysqli_fetch_assoc($pending_donatur)['total'];
                                     <?php endif; ?>
 
                                     <div class="inline-block <?= ($row['status'] == 'pending') ? 'ml-1 border-l pl-2 border-slate-200' : '' ?>">
+                                        <a href="detail.php?id=<?= $row['id'] ?>&tipe=permintaan" class="bg-teal-500 hover:bg-teal-600 text-white px-2 py-1.5 rounded text-xs font-bold transition inline-flex items-center mr-1" title="Lihat Detail">👁️</a>
                                         <a href="edit.php?id=<?= $row['id'] ?>&tipe=desa" class="bg-blue-500 hover:bg-blue-600 text-white px-2 py-1.5 rounded text-xs font-bold transition inline-flex items-center mr-1">✏️ Edit</a>
                                         <form method="POST" class="inline-block">
                                             <input type="hidden" name="id" value="<?= $row['id'] ?>">
@@ -227,6 +226,7 @@ $count_donatur = mysqli_fetch_assoc($pending_donatur)['total'];
                                     <?php endif; ?>
 
                                     <div class="inline-block <?= ($row['status'] == 'pending') ? 'ml-1 border-l pl-2 border-slate-200' : '' ?>">
+                                        <a href="detail.php?id=<?= $row['id'] ?>&tipe=penawaran" class="bg-teal-500 hover:bg-teal-600 text-white px-2 py-1.5 rounded text-xs font-bold transition inline-flex items-center mr-1" title="Lihat Detail">👁️</a>
                                         <a href="edit.php?id=<?= $row['id'] ?>&tipe=donatur" class="bg-blue-500 hover:bg-blue-600 text-white px-2 py-1.5 rounded text-xs font-bold transition inline-flex items-center mr-1">✏️ Edit</a>
                                         <form method="POST" class="inline-block">
                                             <input type="hidden" name="id" value="<?= $row['id'] ?>">

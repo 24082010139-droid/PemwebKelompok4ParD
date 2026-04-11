@@ -57,6 +57,7 @@ $result_my_req = mysqli_query($conn, $query_my_req);
                                     <th class="p-4 font-bold">Target</th>
                                     <th class="p-4 font-bold">Status Admin</th>
                                     <th class="p-4 font-bold">Status Dana</th>
+                                    <th class="p-4 font-bold text-center">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody class="text-sm text-slate-700">
@@ -75,10 +76,13 @@ $result_my_req = mysqli_query($conn, $query_my_req);
                                         <td class="p-4">
                                             <?= ($row['is_funded'] == 1) ? '<span class="text-teal-600 font-bold">✅ Didanai</span>' : '<span class="text-amber-500 font-bold">⏳ Belum Didanai</span>' ?>
                                         </td>
+                                        <td class="p-4 text-center">
+                                            <a href="detail.php?id=<?= $row['id'] ?>&tipe=permintaan" class="text-teal-600 hover:text-teal-800 font-bold text-sm bg-teal-50 hover:bg-teal-100 px-3 py-1.5 rounded-lg transition">Detail</a>
+                                        </td>
                                     </tr>
                                     <?php endwhile; ?>
                                 <?php else: ?>
-                                    <tr><td colspan="4" class="p-8 text-center text-slate-500">Belum ada form pengajuan yang Anda buat.</td></tr>
+                                    <tr><td colspan="5" class="p-8 text-center text-slate-500">Belum ada form pengajuan yang Anda buat.</td></tr>
                                 <?php endif; ?>
                             </tbody>
                         </table>
@@ -97,6 +101,7 @@ $result_my_req = mysqli_query($conn, $query_my_req);
                                     <th class="p-4 font-bold">Instansi Donatur</th>
                                     <th class="p-4 font-bold">Jenis Bantuan</th>
                                     <th class="p-4 font-bold">Keterangan</th>
+                                    <th class="p-4 font-bold text-center">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody class="text-sm text-slate-700">
@@ -107,10 +112,13 @@ $result_my_req = mysqli_query($conn, $query_my_req);
                                         <td class="p-4 font-bold text-slate-900"><?= htmlspecialchars($row['nama_instansi']) ?></td>
                                         <td class="p-4 uppercase text-xs font-bold text-slate-500"><?= htmlspecialchars($row['jenis_penawaran']) ?></td>
                                         <td class="p-4"><span class="bg-amber-100 text-amber-700 px-3 py-1 rounded-full text-xs font-bold">Diproses Admin</span></td>
+                                        <td class="p-4 text-center">
+                                            <a href="detail.php?id=<?= $row['id'] ?>&tipe=penawaran" class="text-amber-600 hover:text-amber-800 font-bold text-sm bg-amber-50 hover:bg-amber-100 px-3 py-1.5 rounded-lg transition">Detail</a>
+                                        </td>
                                     </tr>
                                     <?php endwhile; ?>
                                 <?php else: ?>
-                                    <tr><td colspan="4" class="p-8 text-center text-slate-500">Anda belum mengambil program donatur manapun.</td></tr>
+                                    <tr><td colspan="5" class="p-8 text-center text-slate-500">Anda belum mengambil program donatur manapun.</td></tr>
                                 <?php endif; ?>
                             </tbody>
                         </table>
