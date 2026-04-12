@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /* PENTING: Memberitahu Tailwind v4 lokasi file HTML kamu agar class-nya terdeteksi */
-@source "../Modifikasi Pemweb/**/*.html";
+@source "../Modifikasi Pemweb/**/*.{html,php}";
 
 /* 1. Pengaturan Dasar Halaman */
 body {
@@ -45,8 +45,11 @@ header nav ul li a:hover {
   @apply -rotate-45;
 }
 
-/* 3. Pengaturan Konten Utama (Main) - TETAP SESUAI ASLINYA */
-main {
+/* 3. Pengaturan Konten Utama (Main) - DIPERBAIKI */
+/* HANYA diterapkan pada tag main yang TIDAK memiliki class min-h-screen. 
+   Ini membuat halaman lama tetap berbentuk kotak 900px, 
+   tapi halaman Dashboard (Tailwind) bisa full-width tanpa terganggu. */
+main:not(.min-h-screen) {
   background: white;
   max-width: 900px;
   margin: 40px auto;

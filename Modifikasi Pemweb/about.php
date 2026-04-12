@@ -1,0 +1,164 @@
+<?php
+// Pastikan session berjalan agar header.php bisa mendeteksi role & status login
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+?>
+
+<?php include 'components/header.php'; ?>
+
+<main class="pt-36 pb-16 min-h-screen">
+  <section id="about">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-wrap items-center">
+        <div class="w-full px-4 mb-10 lg:w-1/2">
+          <h4 class="font-bold uppercase text-teal-500 text-lg mb-3 tracking-widest">Tentang Sistem</h4>
+          <h2 class="font-bold text-slate-900 text-3xl mb-5 max-w-md lg:text-4xl leading-tight">
+            Solusi Digital untuk Keadilan Sosial
+          </h2>
+          <p class="font-medium text-slate-500 text-base max-w-xl lg:text-lg leading-relaxed mb-6">
+            <span class="text-teal-600 font-bold">SI BanTal</span> adalah platform inovatif yang dirancang khusus untuk memodernisasi tata kelola bantuan sosial di tingkat desa. Kami hadir untuk memutus rantai birokrasi yang rumit dan menggantinya dengan sistem yang transparan.
+          </p>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="p-4 bg-white rounded-lg shadow-sm border-l-4 hover:scale-105 border-teal-500 transition duration-300">
+              <h5 class="font-bold text-slate-900 text-sm">Efisiensi Data</h5>
+              <p class="text-xs text-slate-500">Pendataan otomatis & akurat.</p>
+            </div>
+            <div class="p-4 bg-white rounded-lg shadow-sm border-l-4 hover:scale-105 border-teal-500 transition duration-300">
+              <h5 class="font-bold text-slate-900 text-sm">Transparansi</h5>
+              <p class="text-xs text-slate-500">Pantau penyaluran secara real-time.</p>
+            </div>
+          </div>
+        </div>
+        <div class="w-full px-4 lg:w-1/2 hover:scale-105 transition duration-300">
+          <div class="relative">
+            <img src="foto tentang sistem.png" alt="Kolaborasi" class="rounded-2xl shadow-2xl max-w-full mx-auto" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-12 bg-teal-500 mt-16">
+    <div class="container mx-auto px-4 hover:scale-105 transition duration-300">
+      <div class="bg-white rounded-2xl shadow-xl p-8 md:p-12 -mt-24 relative z-20">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div>
+            <h3 class="text-xl font-bold text-slate-900 mb-4">Transparansi Dana & Penyaluran</h3>
+            <p class="text-slate-600 text-sm mb-6">Berikut adalah status dana bantuan dan jumlah warga yang telah menerima manfaat per kuartal ini.</p>
+            <div class="space-y-4">
+              <div>
+                <div class="flex justify-between mb-1 text-sm font-semibold">
+                  <span>Target Penerima</span>
+                  <span>85%</span>
+                </div>
+                <div class="w-full bg-slate-200 rounded-full h-2.5">
+                  <div class="bg-teal-500 h-2.5 rounded-full" style="width: 85%"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between mb-1 text-sm font-semibold">
+                  <span>Dana Tersalurkan</span>
+                  <span>Rp 450.000.000</span>
+                </div>
+                <div class="w-full bg-slate-200 rounded-full h-2.5">
+                  <div class="bg-teal-600 h-2.5 rounded-full" style="width: 70%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="flex items-center justify-around border-l-0 md:border-l border-slate-200">
+            <div class="text-center">
+              <span class="block text-4xl font-extrabold text-teal-500">2.4k+</span>
+              <span class="text-slate-500 text-sm font-medium uppercase tracking-tighter">Total KK Terdata</span>
+            </div>
+            <div class="text-center">
+              <span class="block text-4xl font-extrabold text-teal-500">12</span>
+              <span class="text-slate-500 text-sm font-medium uppercase tracking-tighter">Mitra Penyalur</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="visi-misi" class="py-20 bg-slate-100 text-white">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-wrap">
+        <div class="w-full lg:w-1/2 px-4 mb-12 lg:mb-0">
+          <div class="bg-teal-50 p-8 rounded-2xl border border-teal-500 h-full hover:scale-105 hover:border-slate-50 transition duration-300">
+            <div class="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center mb-6">
+              <svg class="w-6 h-6 text-slate-800" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+            </div>
+            <h3 class="font-bold  text-slate-800 text-2xl mb-4">Visi Kami</h3>
+            <p class="text-slate-900 leading-relaxed">
+              "Menjadi pionir dalam transformasi digital bantuan sosial desa yang menjunjung tinggi nilai transparansi dan akuntabilitas demi kesejahteraan masyarakat yang merata."
+            </p>
+          </div>
+        </div>
+        <div class="w-full lg:w-1/2 px-4">
+          <div class="bg-teal-50 p-8 rounded-2xl border border-teal-500 h-full hover:scale-105 hover:border-slate-50 transition duration-300">
+            <div class="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center mb-6">
+              <svg class="w-6 h-6 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
+            </div>
+            <h3 class="font-bold text-slate-800 text-2xl mb-4">Misi Utama</h3>
+            <ul class="space-y-4">
+              <li class="flex items-start">
+                <span class="text-teal-500 mr-3">✔</span>
+                <p class="text-slate-900 text-sm">Digitalisasi pendataan warga untuk akurasi data 100%.</p>
+              </li>
+              <li class="flex items-start">
+                <span class="text-teal-500 mr-3">✔</span>
+                <p class="text-slate-900 text-sm">Otomasi sistem verifikasi untuk meminimalkan human error.</p>
+              </li>
+              <li class="flex items-start">
+                <span class="text-teal-500 mr-3">✔</span>
+                <p class="text-slate-900 text-sm">Menyediakan dashboard publik sebagai bentuk transparansi anggaran.</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="tim" class="pt-16 pb-16">
+    <div class="container mx-auto px-4">
+      <div class="w-full text-center mb-16">
+        <h4 class="font-semibold text-teal-500 text-lg mb-2">Meet Our Developers</h4>
+        <h2 class="font-bold text-slate-900 text-3xl mb-4">
+          Mahasiswa Sistem Informasi Semester 4 Paralel D
+        </h2>
+        <p class="font-medium text-slate-500 text-base md:text-lg">
+          Project ini dikembangkan oleh Kelompok 4 sebagai bagian dari tugas praktikum Pemrograman Web.
+        </p>
+      </div>
+
+      <div class="flex flex-wrap justify-center gap-8">
+        <a href="biodata-daffa.php" class="w-full md:w-1/4 bg-white rounded-xl shadow-lg overflow-hidden hover:scale-105 hover:bg-teal-100 transition duration-500 border">
+          <div class="p-6 text-center">
+            <img src="foto_daffa.jpg" alt="Daffa" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-2 border-teal-500" />
+            <h3 class="font-bold text-slate-900">Ananda Daffa Arrayan</h3>
+            <p class="text-sm text-slate-500">Anggota</p>
+          </div>
+        </a>
+        <a href="biodata-sarah.php" class="w-full md:w-1/4 bg-white rounded-xl shadow-lg overflow-hidden hover:scale-105 hover:bg-teal-100 transition duration-500 border">
+          <div class="p-6 text-center">
+            <img src="foto_sarah.jpg" alt="Sarah" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-2 border-teal-500" />
+            <h3 class="font-bold text-slate-900">Sarah Amelia Rachma</h3>
+            <p class="text-sm text-slate-500">Captain</p>
+          </div>
+        </a>
+        <a href="biodata-zerlina.php" class="w-full md:w-1/4 bg-white rounded-xl shadow-lg overflow-hidden hover:scale-105 hover:bg-teal-100 transition duration-500 border">
+          <div class="p-6 text-center">
+            <img src="foto_zerli.jpeg" alt="Zerlina" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-2 border-teal-500" />
+            <h3 class="font-bold text-slate-900">Zerlina Anggun</h3>
+            <p class="text-sm text-slate-500">Anggota</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<?php include 'components/footer.php'; ?>
