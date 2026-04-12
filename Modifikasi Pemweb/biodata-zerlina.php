@@ -23,7 +23,7 @@
             <h1
               class="block font-bold text-slate-900 text-3xl lg:text-5xl mb-2"
             >
-              Zerlina Anggun
+              Zerlina Anggun Candrawati
             </h1>
 
             <h3 class="font-medium text-slate-500 text-lg mb-6">
