@@ -152,7 +152,7 @@ if (session_status() === PHP_SESSION_NONE) {
         <a href="biodata-zerlina.php" class="w-full md:w-1/4 bg-white rounded-xl shadow-lg overflow-hidden hover:scale-105 hover:bg-teal-100 transition duration-500 border">
           <div class="p-6 text-center">
             <img src="foto_zerli.jpeg" alt="Zerlina" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-2 border-teal-500" />
-            <h3 class="font-bold text-slate-900">Zerlina Anggun Candrawati</h3>
+            <h3 class="font-bold text-slate-900">Zerlina Anggun</h3>
             <p class="text-sm text-slate-500">Anggota</p>
           </div>
         </a>
