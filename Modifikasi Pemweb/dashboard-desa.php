@@ -19,20 +19,19 @@ $result_my_req = mysqli_query($conn, $query_my_req);
 
 <?php include 'components/header.php'; ?>
 
-<main class="pt-36 pb-20 min-h-screen bg-slate-50">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+<main class="pt-36 pb-20 min-h-screen bg-transparent">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
         <div class="flex flex-wrap justify-between items-center mb-10 gap-4">
             <div>
                 <h1 class="text-4xl font-bold text-slate-900 mb-2">Dashboard Desa</h1>
-                <p class="text-slate-500 text-lg">Selamat datang, <span class="font-bold text-amber-600"><?= htmlspecialchars($_SESSION['nama_lengkap'] ?? 'Perangkat Desa') ?></span></p>
+                <p class="text-slate-600 text-lg">Halo, <span class="font-bold text-amber-600"><?= htmlspecialchars($_SESSION['nama_lengkap'] ?? 'Perangkat Desa') ?></span> dari <span class="font-bold text-slate-800 border-b-2 border-amber-300"><?= htmlspecialchars($_SESSION['asal_desa'] ?? 'Desa Anda') ?></span> 👋</p>
             </div>
-           
         </div>
 
         <div class="flex flex-col lg:flex-row gap-8 w-full">
 
-            <div class="w-full lg:w-1/3 p-8 bg-white rounded-2xl shadow-lg border-t-4 border-amber-500 h-fit hover:shadow-xl transition duration-300">
+            <div class="w-full lg:w-1/3 p-8 bg-white/90 backdrop-blur-md rounded-2xl shadow-lg border-t-4 border-amber-500 h-fit hover:shadow-xl transition duration-300">
                 <div class="w-12 h-12 bg-amber-50 rounded-lg flex items-center justify-center mb-6">
                     <svg class="w-6 h-6 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
                 </div>
@@ -45,7 +44,7 @@ $result_my_req = mysqli_query($conn, $query_my_req);
 
             <div class="w-full lg:w-2/3 flex flex-col gap-8">
                 
-                <div class="p-8 bg-white rounded-2xl shadow-lg border-t-4 border-slate-700 hover:shadow-xl transition duration-300">
+                <div class="p-8 bg-white/90 backdrop-blur-md rounded-2xl shadow-lg border-t-4 border-slate-700 hover:shadow-xl transition duration-300">
                     <h3 class="font-bold text-slate-800 text-2xl mb-3">📝 Kebutuhan Desa Saya</h3>
                     <p class="text-base text-slate-500 mb-6">Pantau status validasi form kebutuhan bantuan yang telah Anda ajukan ke Admin.</p>
 
@@ -60,7 +59,7 @@ $result_my_req = mysqli_query($conn, $query_my_req);
                                     <th class="p-4 font-bold text-center">Aksi</th>
                                 </tr>
                             </thead>
-                            <tbody class="text-sm text-slate-700">
+                            <tbody class="text-sm text-slate-700 bg-white">
                                 <?php if($result_my_req && mysqli_num_rows($result_my_req) > 0): ?>
                                     <?php while($row = mysqli_fetch_assoc($result_my_req)): ?>
                                     <tr class="border-b border-slate-100 hover:bg-slate-50">
@@ -76,9 +75,13 @@ $result_my_req = mysqli_query($conn, $query_my_req);
                                         <td class="p-4">
                                             <?= ($row['is_funded'] == 1) ? '<span class="text-teal-600 font-bold">✅ Didanai</span>' : '<span class="text-amber-500 font-bold">⏳ Belum Didanai</span>' ?>
                                         </td>
-                                        <td class="p-4 text-center">
-                                            <a href="detail.php?id=<?= $row['id'] ?>&tipe=permintaan" class="text-teal-600 hover:text-teal-800 font-bold text-sm bg-teal-50 hover:bg-teal-100 px-3 py-1.5 rounded-lg transition">Detail</a>
-                                        </td>
+                                        <td class="p-4 text-center flex items-center justify-center gap-2">
+    <a href="detail.php?id=<?= $row['id'] ?>&tipe=permintaan" class="text-teal-600 hover:text-teal-800 font-bold text-sm bg-teal-50 hover:bg-teal-100 px-3 py-1.5 rounded-lg transition">Detail</a>
+    
+    <?php if($row['status'] == 'pending'): ?>
+        <a href="edit_program.php?id=<?= $row['id'] ?>&tipe=permintaan" class="text-amber-600 hover:text-amber-800 font-bold text-sm bg-amber-50 hover:bg-amber-100 px-3 py-1.5 rounded-lg transition">Edit</a>
+    <?php endif; ?>
+</td>
                                     </tr>
                                     <?php endwhile; ?>
                                 <?php else: ?>
@@ -89,7 +92,7 @@ $result_my_req = mysqli_query($conn, $query_my_req);
                     </div>
                 </div>
 
-                <div class="p-8 bg-white rounded-2xl shadow-lg border-t-4 border-amber-500 hover:shadow-xl transition duration-300">
+                <div class="p-8 bg-white/90 backdrop-blur-md rounded-2xl shadow-lg border-t-4 border-amber-500 hover:shadow-xl transition duration-300">
                     <h3 class="font-bold text-slate-800 text-2xl mb-3">🤝 Partisipasi Program Donatur</h3>
                     <p class="text-base text-slate-500 mb-6">Daftar penawaran donatur dari halaman Program Aktif yang telah Anda klaim.</p>
 
@@ -104,7 +107,7 @@ $result_my_req = mysqli_query($conn, $query_my_req);
                                     <th class="p-4 font-bold text-center">Aksi</th>
                                 </tr>
                             </thead>
-                            <tbody class="text-sm text-slate-700">
+                            <tbody class="text-sm text-slate-700 bg-white">
                                 <?php if($result_apply && mysqli_num_rows($result_apply) > 0): ?>
                                     <?php while($row = mysqli_fetch_assoc($result_apply)): ?>
                                     <tr class="border-b border-slate-100 hover:bg-amber-50">

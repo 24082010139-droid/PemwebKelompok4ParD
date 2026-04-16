@@ -42,37 +42,37 @@ if ($role === 'donatur' || $role === 'guest') {
 
 <?php include 'components/header.php'; ?>
 
-<main class="pt-36 pb-20 min-h-screen bg-slate-50">
-  <div class="container mx-auto px-4">
+<main class="pt-36 pb-20 min-h-screen bg-transparent">
+  <div class="container mx-auto px-4 relative z-10">
     
     <div class="text-center mb-10">
       <h1 class="text-4xl font-extrabold text-slate-900 mb-4">Program Bantuan Aktif</h1>
       <?php if ($role === 'desa'): ?>
-        <p class="text-slate-500 max-w-2xl mx-auto">Temukan berbagai penawaran bantuan dari instansi/donatur yang siap disalurkan ke desa Anda.</p>
+        <p class="text-slate-600 max-w-2xl mx-auto font-medium">Temukan berbagai penawaran bantuan dari instansi/donatur yang siap disalurkan ke desa Anda.</p>
       <?php elseif ($role === 'donatur'): ?>
-        <p class="text-slate-500 max-w-2xl mx-auto">Daftar desa yang membutuhkan uluran tangan Anda. Pilih program yang ingin Anda danai untuk mulai membawa perubahan.</p>
+        <p class="text-slate-600 max-w-2xl mx-auto font-medium">Daftar desa yang membutuhkan uluran tangan Anda. Pilih program yang ingin Anda danai untuk mulai membawa perubahan.</p>
       <?php else: ?>
-        <p class="text-slate-500 max-w-2xl mx-auto">Jelajahi ekosistem SI BanTal. Lihat desa yang membutuhkan bantuan atau temukan donatur yang siap menyalurkan dananya.</p>
+        <p class="text-slate-600 max-w-2xl mx-auto font-medium">Jelajahi ekosistem SI BanTal. Lihat desa yang membutuhkan bantuan atau temukan donatur yang siap menyalurkan dananya.</p>
       <?php endif; ?>
     </div>
 
-    <div class="bg-white p-4 rounded-xl shadow-md border border-slate-200 mb-10 max-w-4xl mx-auto">
+    <div class="bg-white/80 backdrop-blur-md p-4 rounded-xl shadow-lg border border-white/50 mb-10 max-w-4xl mx-auto">
         <form action="" method="GET" class="flex flex-col md:flex-row gap-4">
             <div class="flex-grow">
-                <input type="text" name="search" value="<?= htmlspecialchars($search) ?>" placeholder="Cari nama instansi, desa, atau kata kunci..." class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 outline-none">
+                <input type="text" name="search" value="<?= htmlspecialchars($search) ?>" placeholder="Cari nama instansi, desa, atau kata kunci..." class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 outline-none bg-white/90">
             </div>
             
             <?php if ($role !== 'guest'): ?>
             <div class="w-full md:w-64">
                 <?php if ($role === 'desa'): ?>
-                    <select name="kategori" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 outline-none">
+                    <select name="kategori" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 outline-none bg-white/90">
                         <option value="">Semua Jenis Bantuan</option>
                         <option value="Sembako" <?= ($kategori == 'Sembako') ? 'selected' : '' ?>>Sembako</option>
                         <option value="Dana Tunai" <?= ($kategori == 'Dana Tunai') ? 'selected' : '' ?>>Dana Tunai</option>
                         <option value="Material" <?= ($kategori == 'Material') ? 'selected' : '' ?>>Material Bangunan</option>
                     </select>
                 <?php elseif ($role === 'donatur'): ?>
-                    <select name="kategori" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 outline-none">
+                    <select name="kategori" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 outline-none bg-white/90">
                         <option value="">Semua Target</option>
                         <option value="warga" <?= ($kategori == 'warga') ? 'selected' : '' ?>>Warga Terdampak</option>
                         <option value="fasilitas" <?= ($kategori == 'fasilitas') ? 'selected' : '' ?>>Fasilitas Umum</option>
@@ -92,7 +92,7 @@ if ($role === 'donatur' || $role === 'guest') {
         
         <?php if ($role === 'guest'): ?>
             <div class="flex items-center mb-6 mt-12">
-                <div class="w-8 h-8 bg-amber-500 rounded-full flex items-center justify-center mr-3"><span class="text-white font-bold">1</span></div>
+                <div class="w-8 h-8 bg-amber-500 rounded-full flex items-center justify-center mr-3 shadow-md"><span class="text-white font-bold">1</span></div>
                 <h2 class="text-2xl font-bold text-slate-800">Daftar Kebutuhan Desa</h2>
             </div>
         <?php endif; ?>
@@ -100,46 +100,51 @@ if ($role === 'donatur' || $role === 'guest') {
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
             <?php if(mysqli_num_rows($query_permintaan) > 0): ?>
                 <?php while($row = mysqli_fetch_assoc($query_permintaan)): ?>
-                    <div class="bg-white rounded-2xl shadow-lg border border-slate-100 overflow-hidden hover:shadow-xl transition-shadow flex flex-col h-full">
-                        <div class="bg-amber-500 p-4 relative">
-                            <span class="bg-white text-amber-600 text-xs font-bold px-3 py-1 rounded-full absolute top-4 right-4 shadow capitalize">Target: <?= $row['target_bantuan'] ?></span>
-                            <h3 class="text-xl font-bold text-white mt-6">Desa <?= $row['desa'] ?></h3>
-                            <p class="text-amber-100 text-sm"><?= $row['kecamatan'] ?>, <?= $row['kota'] ?></p>
-                        </div>
-                        <div class="p-6 flex-grow flex flex-col">
-                            <h4 class="text-sm font-bold text-slate-400 uppercase tracking-wider mb-2">Kondisi / Alasan</h4>
-                            <p class="text-slate-700 text-sm mb-4 line-clamp-3"><?= $row['alasan'] ?></p>
-                            <?php if($row['jumlah_kk']): ?>
-                                <div class="bg-slate-50 p-2 rounded border border-slate-100 mb-4 flex items-center justify-center">
-                                    <span class="text-sm font-bold text-slate-600">Dibutuhkan untuk <?= $row['jumlah_kk'] ?> KK</span>
-                                </div>
-                            <?php endif; ?>
-                            <div class="mt-auto pt-4 border-t border-slate-100">
-                                <p class="text-xs text-slate-400 mb-3">Tgl Pengajuan: <?= date('d M Y', strtotime($row['created_at'])) ?></p>
-                                
-                                <?php if ($role === 'guest'): ?>
-                                    <a href="login.php" class="block text-center w-full bg-slate-800 hover:bg-slate-900 text-white font-bold py-2.5 rounded-lg transition mt-3 shadow-md">🔒 Login untuk Mendanai</a>
-                                <?php else: ?>
-                                    <a href="apply.php?id=<?= $row['id'] ?>&tipe=permintaan" onclick="return confirm('Apakah Anda yakin ingin mendanai program ini?')" class="block text-center w-full bg-teal-500 hover:bg-teal-600 text-white font-bold py-2.5 rounded-lg transition mt-3 shadow-md">Danai Program Ini</a>
+                    <?php 
+                        // Tentukan link tujuan berdasarkan status login
+                        $link_tujuan = ($role === 'guest') ? 'login.php' : 'detail.php?id=' . $row['id'] . '&tipe=permintaan'; 
+                    ?>
+                    <a href="<?= $link_tujuan ?>" class="block group h-full">
+                        <div class="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg border border-white/50 overflow-hidden group-hover:shadow-2xl group-hover:-translate-y-2 transition-all duration-300 transform flex flex-col h-full cursor-pointer">
+                            <div class="bg-amber-500 p-4 relative">
+                                <span class="bg-white text-amber-600 text-xs font-bold px-3 py-1 rounded-full absolute top-4 right-4 shadow capitalize">Target: <?= $row['target_bantuan'] ?></span>
+                                <h3 class="text-xl font-bold text-white mt-6">Desa <?= $row['desa'] ?></h3>
+                                <p class="text-amber-100 text-sm"><?= $row['kecamatan'] ?>, <?= $row['kota'] ?></p>
+                            </div>
+                            <div class="p-6 flex-grow flex flex-col">
+                                <h4 class="text-sm font-bold text-slate-400 uppercase tracking-wider mb-2">Kondisi / Alasan</h4>
+                                <p class="text-slate-700 text-sm mb-4 line-clamp-3"><?= $row['alasan'] ?></p>
+                                <?php if($row['jumlah_kk']): ?>
+                                    <div class="bg-slate-50 p-2 rounded border border-slate-100 mb-4 flex items-center justify-center">
+                                        <span class="text-sm font-bold text-slate-600">Dibutuhkan untuk <?= $row['jumlah_kk'] ?> KK</span>
+                                    </div>
                                 <?php endif; ?>
+                                <div class="mt-auto pt-4 border-t border-slate-100">
+                                    <p class="text-xs text-slate-400 mb-3">Tgl Pengajuan: <?= date('d M Y', strtotime($row['created_at'])) ?></p>
+                                    
+                                    <?php if ($role === 'guest'): ?>
+                                        <div class="block text-center w-full bg-slate-800 group-hover:bg-slate-900 text-white font-bold py-2.5 rounded-lg transition duration-300 mt-3 shadow-md">🔒 Login untuk Mendanai</div>
+                                    <?php else: ?>
+                                        <div class="block text-center w-full bg-teal-500 group-hover:bg-teal-600 text-white font-bold py-2.5 rounded-lg transition duration-300 mt-3 shadow-md shadow-teal-500/30">Lihat Detail & Danai</div>
+                                    <?php endif; ?>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 <?php endwhile; ?>
             <?php else: ?>
-                <div class="col-span-full text-center py-10 bg-white rounded-2xl border border-dashed border-slate-300">
-                    <p class="text-slate-500">Belum ada pengajuan bantuan dari desa yang diverifikasi.</p>
+                <div class="col-span-full text-center py-10 bg-white/60 backdrop-blur-sm rounded-2xl border border-dashed border-slate-300">
+                    <p class="text-slate-500 font-medium">Belum ada pengajuan bantuan dari desa yang diverifikasi.</p>
                 </div>
             <?php endif; ?>
         </div>
     <?php endif; ?>
 
-
     <?php if ($role === 'desa' || $role === 'guest'): ?>
         
         <?php if ($role === 'guest'): ?>
-            <div class="flex items-center mb-6 mt-12 border-t border-slate-200 pt-12">
-                <div class="w-8 h-8 bg-teal-500 rounded-full flex items-center justify-center mr-3"><span class="text-white font-bold">2</span></div>
+            <div class="flex items-center mb-6 mt-12 border-t border-slate-200/50 pt-12">
+                <div class="w-8 h-8 bg-teal-500 rounded-full flex items-center justify-center mr-3 shadow-md"><span class="text-white font-bold">2</span></div>
                 <h2 class="text-2xl font-bold text-slate-800">Daftar Penawaran Donatur</h2>
             </div>
         <?php endif; ?>
@@ -147,30 +152,36 @@ if ($role === 'donatur' || $role === 'guest') {
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
             <?php if(mysqli_num_rows($query_penawaran) > 0): ?>
                 <?php while($row = mysqli_fetch_assoc($query_penawaran)): ?>
-                    <div class="bg-white rounded-2xl shadow-lg border border-slate-100 overflow-hidden hover:shadow-xl transition-shadow flex flex-col h-full">
-                        <div class="bg-teal-500 p-4 relative">
-                            <span class="bg-white text-teal-600 text-xs font-bold px-3 py-1 rounded-full absolute top-4 right-4 shadow"><?= $row['jenis_penawaran'] ?></span>
-                            <h3 class="text-xl font-bold text-white mt-6"><?= $row['nama_instansi'] ?></h3>
-                            <p class="text-teal-100 text-sm">PJ: <?= $row['pj_donatur'] ?></p>
-                        </div>
-                        <div class="p-6 flex-grow flex flex-col">
-                            <h4 class="text-sm font-bold text-slate-400 uppercase tracking-wider mb-2">Detail Bantuan</h4>
-                            <p class="text-slate-700 text-sm mb-4 line-clamp-3"><?= $row['detail_bantuan'] ?></p>
-                            <div class="mt-auto pt-4 border-t border-slate-100">
-                                <p class="text-xs text-slate-400 mb-3">Tgl Penawaran: <?= date('d M Y', strtotime($row['created_at'])) ?></p>
-                                
-                                <?php if ($role === 'guest'): ?>
-                                    <a href="login.php" class="block text-center w-full bg-slate-800 hover:bg-slate-900 text-white font-bold py-2.5 rounded-lg transition mt-3 shadow-md">🔒 Login untuk Mengajukan</a>
-                                <?php else: ?>
-                                    <a href="apply.php?id=<?= $row['id'] ?>&tipe=penawaran" onclick="return confirm('Apakah Anda yakin ingin mengajukan desa Anda?')" class="block text-center w-full bg-slate-900 hover:bg-teal-500 text-white font-bold py-2.5 rounded-lg transition mt-3">Ajukan Desa Saya</a>
-                                <?php endif; ?>
+                    <?php 
+                        // Tentukan link tujuan berdasarkan status login
+                        $link_tujuan = ($role === 'guest') ? 'login.php' : 'detail.php?id=' . $row['id'] . '&tipe=penawaran'; 
+                    ?>
+                    <a href="<?= $link_tujuan ?>" class="block group h-full">
+                        <div class="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg border border-white/50 overflow-hidden group-hover:shadow-2xl group-hover:-translate-y-2 transition-all duration-300 transform flex flex-col h-full cursor-pointer">
+                            <div class="bg-teal-500 p-4 relative">
+                                <span class="bg-white text-teal-600 text-xs font-bold px-3 py-1 rounded-full absolute top-4 right-4 shadow"><?= $row['jenis_penawaran'] ?></span>
+                                <h3 class="text-xl font-bold text-white mt-6"><?= $row['nama_instansi'] ?></h3>
+                                <p class="text-teal-100 text-sm">PJ: <?= $row['pj_donatur'] ?></p>
+                            </div>
+                            <div class="p-6 flex-grow flex flex-col">
+                                <h4 class="text-sm font-bold text-slate-400 uppercase tracking-wider mb-2">Detail Bantuan</h4>
+                                <p class="text-slate-700 text-sm mb-4 line-clamp-3"><?= $row['detail_bantuan'] ?></p>
+                                <div class="mt-auto pt-4 border-t border-slate-100">
+                                    <p class="text-xs text-slate-400 mb-3">Tgl Penawaran: <?= date('d M Y', strtotime($row['created_at'])) ?></p>
+                                    
+                                    <?php if ($role === 'guest'): ?>
+                                        <div class="block text-center w-full bg-slate-800 group-hover:bg-slate-900 text-white font-bold py-2.5 rounded-lg transition duration-300 mt-3 shadow-md">🔒 Login untuk Mengajukan</div>
+                                    <?php else: ?>
+                                        <div class="block text-center w-full bg-amber-500 group-hover:bg-amber-600 text-white font-bold py-2.5 rounded-lg transition duration-300 mt-3 shadow-md shadow-amber-500/30">Lihat Detail & Klaim</div>
+                                    <?php endif; ?>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 <?php endwhile; ?>
             <?php else: ?>
-                <div class="col-span-full text-center py-10 bg-white rounded-2xl border border-dashed border-slate-300">
-                    <p class="text-slate-500">Belum ada penawaran bantuan dari donatur yang tersedia saat ini.</p>
+                <div class="col-span-full text-center py-10 bg-white/60 backdrop-blur-sm rounded-2xl border border-dashed border-slate-300">
+                    <p class="text-slate-500 font-medium">Belum ada penawaran bantuan dari donatur yang tersedia saat ini.</p>
                 </div>
             <?php endif; ?>
         </div>

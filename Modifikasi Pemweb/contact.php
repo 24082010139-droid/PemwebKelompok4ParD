@@ -83,10 +83,10 @@ if (isset($_POST['submit_desa'])) {
 
 <?php include 'components/header.php'; ?>
 
-<main class="pt-36 pb-20 min-h-screen bg-slate-50">
-  <div class="container mx-auto px-4">
+<main class="pt-36 pb-20 min-h-screen bg-transparent">
+  <div class="container mx-auto px-4 relative z-10">
     
-    <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-100">
+    <div class="max-w-4xl mx-auto bg-white/90 backdrop-blur-md rounded-2xl shadow-xl overflow-hidden border border-slate-100">
       
       <?php if ($_SESSION['role'] === 'donatur'): ?>
           <div class="bg-teal-500 p-8 text-center text-white relative overflow-hidden">
@@ -119,19 +119,19 @@ if (isset($_POST['submit_desa'])) {
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                         <label class="block text-sm font-semibold text-slate-700 mb-2">Nama Instansi/Perusahaan</label>
-                        <input type="text" name="nama_instansi" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 outline-none bg-slate-50 focus:bg-white transition" required>
+                        <input type="text" name="nama_instansi" value="<?= htmlspecialchars($_SESSION['nama_organisasi'] ?? '') ?>" readonly class="w-full px-4 py-3 border border-slate-300 rounded-lg bg-slate-200 text-slate-500 cursor-not-allowed outline-none" required>
                     </div>
                     <div>
                         <label class="block text-sm font-semibold text-slate-700 mb-2">Penanggung Jawab (PJ)</label>
-                        <input type="text" name="pj_donatur" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 outline-none bg-slate-50 focus:bg-white transition" required>
+                        <input type="text" name="pj_donatur" value="<?= htmlspecialchars($_SESSION['nama_lengkap'] ?? '') ?>" readonly class="w-full px-4 py-3 border border-slate-300 rounded-lg bg-slate-200 text-slate-500 cursor-not-allowed outline-none" required>
                     </div>
                     <div>
                         <label class="block text-sm font-semibold text-slate-700 mb-2">Jabatan PJ</label>
-                        <input type="text" name="jabatan_donatur" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 outline-none bg-slate-50 focus:bg-white transition" required>
+                        <input type="text" name="jabatan_donatur" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 outline-none bg-slate-50 focus:bg-white transition" placeholder="Contoh: Manajer CSR" required>
                     </div>
                     <div>
                         <label class="block text-sm font-semibold text-slate-700 mb-2">Kontak (No. HP/WA)</label>
-                        <input type="text" name="kontak_donatur" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 outline-none bg-slate-50 focus:bg-white transition" required>
+                        <input type="text" name="kontak_donatur" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 outline-none bg-slate-50 focus:bg-white transition" placeholder="08xxxxxxxxxx" required>
                     </div>
                 </div>
                 
@@ -148,17 +148,17 @@ if (isset($_POST['submit_desa'])) {
 
                 <div>
                     <label class="block text-sm font-semibold text-slate-700 mb-2">Detail Bantuan</label>
-                    <textarea id="detail_bantuan" name="detail_bantuan" rows="4" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 outline-none bg-slate-50 focus:bg-white transition" placeholder="Minimal 20 Karakter..." required></textarea>
+                    <textarea id="detail_bantuan" name="detail_bantuan" rows="4" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 outline-none bg-slate-50 focus:bg-white transition" placeholder="Jelaskan detail bantuan yang akan diberikan. Minimal 20 Karakter..." required></textarea>
                 </div>
 
                 <div>
                     <label class="block text-sm font-semibold text-slate-700 mb-2">Unggah Dokumen Pendukung (PDF/JPG/PNG)</label>
                     <input type="file" name="dokumen_donatur" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 outline-none bg-slate-50 focus:bg-white transition cursor-pointer" required>
-                    <p class="text-xs text-slate-500 mt-1">*Maksimal ukuran file menyesuaikan server (umumnya 2MB).</p>
+                    <p class="text-xs text-slate-500 mt-1">*Surat keterangan, brosur, atau foto. (Maks 2MB).</p>
                 </div>
 
                 <div class="pt-4">
-                    <button type="submit" name="submit_donatur" class="w-full bg-teal-500 hover:bg-teal-600 text-white font-bold py-4 rounded-lg shadow-lg hover:shadow-teal-500/30 transform transition duration-300">Kirim Penawaran Donasi</button>
+                    <button type="submit" name="submit_donatur" class="w-full bg-teal-500 hover:bg-teal-600 text-white font-bold py-4 rounded-lg shadow-lg hover:shadow-teal-500/30 transform transition duration-300">Kirim Penawaran Program Bantuan</button>
                 </div>
             </form>
 
@@ -170,11 +170,11 @@ if (isset($_POST['submit_desa'])) {
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
                             <label class="block text-sm font-semibold text-slate-700 mb-2">Nama Penanggung Jawab</label>
-                            <input type="text" name="nama_pj" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-amber-500 outline-none bg-white transition" required>
+                            <input type="text" name="nama_pj" value="<?= htmlspecialchars($_SESSION['nama_lengkap'] ?? '') ?>" readonly class="w-full px-4 py-3 border border-slate-300 rounded-lg bg-slate-200 text-slate-500 cursor-not-allowed outline-none" required>
                         </div>
                         <div>
                             <label class="block text-sm font-semibold text-slate-700 mb-2">Jabatan</label>
-                            <input type="text" name="jabatan" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-amber-500 outline-none bg-white transition" required>
+                            <input type="text" name="jabatan" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-amber-500 outline-none bg-white transition" placeholder="Contoh: Kepala Desa / RT" required>
                         </div>
                     </div>
                 </div>
@@ -184,11 +184,11 @@ if (isset($_POST['submit_desa'])) {
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
                             <label class="block text-sm font-semibold text-slate-700 mb-2">Provinsi</label>
-                            <input type="text" name="provinsi" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-amber-500 outline-none bg-white transition" required>
+                            <input type="text" name="provinsi" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-amber-500 outline-none bg-white transition" placeholder="Contoh: Jawa Timur" required>
                         </div>
                         <div>
                             <label class="block text-sm font-semibold text-slate-700 mb-2">Kota / Kabupaten</label>
-                            <input type="text" name="kota" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-amber-500 outline-none bg-white transition" required>
+                            <input type="text" name="kota" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-amber-500 outline-none bg-white transition" placeholder="Contoh: Surabaya" required>
                         </div>
                         <div>
                             <label class="block text-sm font-semibold text-slate-700 mb-2">Kecamatan</label>
@@ -196,7 +196,7 @@ if (isset($_POST['submit_desa'])) {
                         </div>
                         <div>
                             <label class="block text-sm font-semibold text-slate-700 mb-2">Nama Desa / Kelurahan</label>
-                            <input type="text" name="desa" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-amber-500 outline-none bg-white transition" required>
+                            <input type="text" name="desa" value="<?= htmlspecialchars($_SESSION['asal_desa'] ?? '') ?>" readonly class="w-full px-4 py-3 border border-slate-300 rounded-lg bg-slate-200 text-slate-500 cursor-not-allowed outline-none" required>
                         </div>
                     </div>
                 </div>
@@ -212,19 +212,19 @@ if (isset($_POST['submit_desa'])) {
                     </div>
                     <div>
                         <label class="block text-sm font-semibold text-slate-700 mb-2">Jumlah KK</label>
-                        <input type="number" id="jumlah_kk" name="jumlah_kk" placeholder="Kosongkan jika fasilitas" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-amber-500 outline-none bg-slate-50 focus:bg-white transition">
+                        <input type="number" id="jumlah_kk" name="jumlah_kk" placeholder="Kosongkan jika untuk fasilitas" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-amber-500 outline-none bg-slate-50 focus:bg-white transition">
                     </div>
                 </div>
                 
                 <div>
-                    <label class="block text-sm font-semibold text-slate-700 mb-2">Alasan Permintaan</label>
-                    <textarea id="alasan" name="alasan" rows="5" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-amber-500 outline-none bg-slate-50 focus:bg-white transition" placeholder="Minimal 20 Karakter..." required></textarea>
+                    <label class="block text-sm font-semibold text-slate-700 mb-2">Alasan Permintaan / Kondisi</label>
+                    <textarea id="alasan" name="alasan" rows="5" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-amber-500 outline-none bg-slate-50 focus:bg-white transition" placeholder="Jelaskan secara detail kondisi warga atau fasilitas yang membutuhkan bantuan. Minimal 20 Karakter..." required></textarea>
                 </div>
 
                 <div>
-                    <label class="block text-sm font-semibold text-slate-700 mb-2">Unggah Dokumen (Foto Kondisi/Surat Pengajuan)</label>
+                    <label class="block text-sm font-semibold text-slate-700 mb-2">Unggah Dokumen (Foto Kondisi / Surat Pengajuan)</label>
                     <input type="file" name="dokumen_desa" accept=".pdf,.jpg,.jpeg,.png" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-amber-500 outline-none bg-slate-50 focus:bg-white transition cursor-pointer" required>
-                    <p class="text-xs text-slate-500 mt-1">*Unggah file PDF, JPG, atau PNG.</p>
+                    <p class="text-xs text-slate-500 mt-1">*Unggah file PDF, JPG, atau PNG sebagai bukti autentik.</p>
                 </div>
                 
                 <div class="pt-4">

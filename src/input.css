@@ -73,7 +73,7 @@ section h2 {
 
 /* 5. Khusus Halaman Pengajuan (Form) - TIDAK DIHAPUS */
 #formPengajuan {
-  max-width: 500px;
+  max-width: 900px;
   margin: 0;
   display: grid;
   gap: 10px;

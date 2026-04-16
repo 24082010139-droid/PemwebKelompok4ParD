@@ -31,6 +31,10 @@ if (isset($_POST['login'])) {
             $_SESSION['nama_lengkap'] = $row['nama_lengkap'];
             $_SESSION['role'] = $row['role'];
             
+            // SIMPAN DATA DESA / ORGANISASI KE SESSION
+            $_SESSION['asal_desa'] = $row['asal_desa'];
+            $_SESSION['nama_organisasi'] = $row['nama_organisasi'];
+            
             // PENGALIHAN BERDASARKAN ROLE (ROUTING)
             if ($row['role'] === 'admin') {
                 header("Location: dashboard-admin.php");
