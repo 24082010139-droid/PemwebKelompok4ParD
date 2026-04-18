@@ -3,36 +3,13 @@
 /* PENTING: Memberitahu Tailwind v4 lokasi file HTML kamu agar class-nya terdeteksi */
 @source "../Modifikasi Pemweb/**/*.{html,php}";
 
-/* 1. Pengaturan Dasar Halaman */
-body {
-  background-color: #f4f4f4;
-  margin: 0;
-  padding: 0;
-  display: block;
-}
-
-/* --- BAGIAN NAVBAR (DIEDIT UNTUK STICKY & BLUR) --- */
-.navbar-fixed {
-  /* Menggunakan bg-white/70 (v4) dan !important agar menang dari class absolute */
-  @apply fixed z-[9999] bg-white/70 backdrop-blur-md shadow-sm transition duration-300;
-  position: fixed !important;
-  top: 0;
-  left: 0;
-  width: 100%;
-}
-
-/* Menghapus gaya header lama yang solid agar efek blur terlihat */
-header nav ul li a:hover {
-  @apply text-teal-500 underline transition;
-}
-/* --- AKHIR BAGIAN NAVBAR --- */
-
-/* --- HAMBURGER MENU --- */
+/* =========================================
+   1. HAMBURGER MENU ANIMATION
+   ========================================= */
 .hamburger-line {
   @apply w-[30px] h-[2px] my-2 block bg-slate-800;
 }
 
-/* Animasi saat tombol diklik (berubah jadi X) */
 .hamburger-active > span:nth-child(1) {
   @apply rotate-45;
 }
@@ -45,33 +22,36 @@ header nav ul li a:hover {
   @apply -rotate-45;
 }
 
-/* 3. Pengaturan Konten Utama (Main) - DIPERBAIKI */
-/* HANYA diterapkan pada tag main yang TIDAK memiliki class min-h-screen. 
-   Ini membuat halaman lama tetap berbentuk kotak 900px, 
-   tapi halaman Dashboard (Tailwind) bisa full-width tanpa terganggu. */
+/* =========================================
+   2. PENGATURAN HALAMAN LAMA (LEGACY)
+   ========================================= */
+/* Diterapkan pada halaman lama agar tetap rapi, tapi background-nya 
+   dibuat transparan agar efek cahaya global tetap tembus */
 main:not(.min-h-screen) {
-  background: white;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
   max-width: 900px;
   margin: 40px auto;
   padding: 40px;
-  border-radius: 8px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
   min-height: 400px;
 }
 
-/* 4. Merapikan Section dan Teks - TETAP SESUAI ASLINYA */
 section {
   margin-bottom: 30px;
   line-height: 1.6;
 }
 
 section h2 {
-  border-bottom: 2px solid #f4f4f4;
+  border-bottom: 2px solid #e2e8f0; /* slate-200 */
   padding-bottom: 10px;
   margin-bottom: 20px;
 }
 
-/* 5. Khusus Halaman Pengajuan (Form) - TIDAK DIHAPUS */
+/* =========================================
+   3. GAYA FORM LAMA (Jika masih digunakan)
+   ========================================= */
 #formPengajuan {
   max-width: 900px;
   margin: 0;
@@ -89,29 +69,35 @@ section h2 {
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 6px;
   box-sizing: border-box;
 }
 
 #formPengajuan button {
-  background-color: #28a745;
+  background-color: #14b8a6; /* teal-500 */
   color: white;
   border: none;
   padding: 12px;
-  border-radius: 4px;
+  border-radius: 6px;
   cursor: pointer;
   font-weight: bold;
   margin-top: 20px;
+  transition: all 0.3s;
 }
 
 #formPengajuan button:hover {
-  background-color: #218838;
+  background-color: #0f766e; /* teal-700 */
 }
 
-/* 6. Footer - TETAP SESUAI ASLINYA */
+/* Footer Lama */
 footer {
   text-align: center;
   padding: 30px;
-  color: #666;
+  color: #64748b; /* slate-500 */
   font-size: 14px;
+}
+
+/* Tambahan class untuk script JS navbar-fixed jika masih ada */
+.navbar-fixed {
+  @apply shadow-md bg-white/80 backdrop-blur-md;
 }

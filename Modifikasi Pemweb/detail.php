@@ -51,24 +51,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['ambil_program'])) {
 }
 
 // ========================================================
-// AMBIL DATA DETAIL + DATA AKUN PEMBUAT (JOIN)
+// AMBIL DATA DETAIL PEMBUAT PROGRAM (JOIN DENGAN USERS)
 // ========================================================
 $data = null;
 
 if ($tipe === 'permintaan') {
-    // Join dengan tabel users untuk mengambil asal_desa
     $query = "SELECT pb.*, u.nama_lengkap as pembuat_akun, u.asal_desa as akun_asal, u.email as email_pembuat 
-              FROM permintaan_bantuan pb 
-              JOIN users u ON pb.user_id = u.id 
-              WHERE pb.id = $id";
+              FROM permintaan_bantuan pb JOIN users u ON pb.user_id = u.id WHERE pb.id = $id";
     $result = mysqli_query($conn, $query);
     if($result) $data = mysqli_fetch_assoc($result);
 } elseif ($tipe === 'penawaran') {
-    // Join dengan tabel users untuk mengambil nama_organisasi
     $query = "SELECT pb.*, u.nama_lengkap as pembuat_akun, u.nama_organisasi as akun_asal, u.email as email_pembuat 
-              FROM penawaran_bantuan pb 
-              JOIN users u ON pb.user_id = u.id 
-              WHERE pb.id = $id";
+              FROM penawaran_bantuan pb JOIN users u ON pb.user_id = u.id WHERE pb.id = $id";
     $result = mysqli_query($conn, $query);
     if($result) $data = mysqli_fetch_assoc($result);
 }
@@ -76,6 +70,24 @@ if ($tipe === 'permintaan') {
 if (!$data) {
     die("<div class='p-10 text-center text-xl text-slate-500'>Data tidak ditemukan di database.</div>");
 }
+
+// ========================================================
+// JIKA SUDAH DIDANAI: CARI TAHU SIAPA YANG MENDANAI/MENGKLAIM
+// ========================================================
+$taker_data = null;
+if ($data['is_funded'] == 1) {
+    // Cari history yang cocok, lalu join ke tabel users untuk ambil identitasnya
+    // REVISI: Tambahkan hp.user_id as taker_id untuk dicocokkan dengan session
+    $query_taker = "SELECT u.nama_lengkap, u.asal_desa, u.nama_organisasi, u.email, hp.created_at as tgl_transaksi, hp.user_id as taker_id 
+                    FROM history_penyaluran hp 
+                    JOIN users u ON hp.user_id = u.id 
+                    WHERE hp.program_id = $id AND hp.tipe_program = '$tipe'";
+    $res_taker = mysqli_query($conn, $query_taker);
+    if ($res_taker && mysqli_num_rows($res_taker) > 0) {
+        $taker_data = mysqli_fetch_assoc($res_taker);
+    }
+}
+
 
 function getStatusBadge($status) {
     if($status == 'pending') return '<span class="bg-slate-200 text-slate-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider shadow-sm">Menunggu Admin</span>';
@@ -152,7 +164,9 @@ function getStatusBadge($status) {
                     <div class="lg:col-span-2 space-y-8">
                         
                         <div class="flex items-center p-4 bg-white rounded-2xl border border-slate-200 shadow-sm">
-                            
+                            <div class="w-14 h-14 bg-slate-100 rounded-full flex items-center justify-center text-slate-500 mr-5 text-xl font-bold">
+                                <?= strtoupper(substr($data['pembuat_akun'], 0, 1)) ?>
+                            </div>
                             <div>
                                 <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Dipublikasikan Oleh</p>
                                 <p class="font-bold text-slate-800 text-lg"><?= htmlspecialchars($data['pembuat_akun']) ?></p>
@@ -187,15 +201,46 @@ function getStatusBadge($status) {
                     <div class="space-y-6">
                         
                         <div class="bg-white p-6 rounded-2xl shadow-xl border border-slate-200 relative overflow-hidden">
+                            
                             <?php if ($data['is_funded'] == 1): ?>
-                                <div class="absolute top-0 left-0 w-full h-1 bg-slate-300"></div>
-                                <div class="text-center py-4">
-                                    <div class="w-16 h-16 bg-slate-100 text-slate-400 rounded-full flex items-center justify-center mx-auto mb-4">
-                                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                                <div class="absolute top-0 left-0 w-full h-1 bg-green-500"></div>
+                                <div class="text-center pb-4">
+                                    <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-3 shadow-inner">
+                                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                                     </div>
-                                    <h3 class="font-bold text-slate-800 text-lg mb-1">Tidak Tersedia</h3>
-                                    <p class="text-sm text-slate-500 mb-4">Program ini sudah diambil atau didanai.</p>
+                                    <h3 class="font-bold text-slate-800 text-lg">Program Selesai</h3>
                                 </div>
+                                
+                                <?php if($taker_data): ?>
+                                    <?php if ($taker_data['taker_id'] == $user_id_sekarang): ?>
+                                        <div class="bg-teal-50 border border-teal-200 rounded-xl p-4 mt-2 text-center">
+                                            <p class="font-bold text-teal-800 text-base mb-1">
+                                                <?= ($tipe === 'permintaan') ? 'Anda Telah Mendanai Program Ini' : 'Anda Telah Mengklaim Program Ini' ?>
+                                            </p>
+                                            <p class="text-xs text-teal-600">
+                                                Tanggal: <?= date('d M Y', strtotime($taker_data['tgl_transaksi'])) ?>
+                                            </p>
+                                        </div>
+                                    <?php else: ?>
+                                        <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 mt-2 text-left">
+                                            <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-2 border-b border-slate-200 pb-2">
+                                                <?= ($tipe === 'permintaan') ? 'Didanai Oleh (Donatur)' : 'Diklaim Oleh (Desa)' ?>
+                                            </p>
+                                            <p class="font-bold text-slate-800 text-base"><?= htmlspecialchars($taker_data['nama_lengkap']) ?></p>
+                                            <p class="text-sm text-teal-600 font-bold mb-3">
+                                                <?= ($tipe === 'permintaan') ? htmlspecialchars($taker_data['nama_organisasi'] ?? '-') : htmlspecialchars($taker_data['asal_desa'] ?? '-') ?>
+                                            </p>
+                                            <div class="flex items-center text-xs text-slate-500 mb-4">
+                                                <svg class="w-4 h-4 mr-1 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                                                Tanggal: <?= date('d M Y', strtotime($taker_data['tgl_transaksi'])) ?>
+                                            </div>
+                                            <a href="mailto:<?= htmlspecialchars($taker_data['email']) ?>" class="block text-center w-full bg-white border border-slate-300 hover:bg-slate-100 text-slate-700 font-bold py-2 rounded-lg transition shadow-sm text-sm">
+                                                ✉️ Hubungi Partner
+                                            </a>
+                                        </div>
+                                    <?php endif; ?>
+                                <?php endif; ?>
+
                             <?php elseif ($data['status'] !== 'approved'): ?>
                                 <div class="absolute top-0 left-0 w-full h-1 bg-amber-400"></div>
                                 <div class="text-center py-4">

@@ -36,6 +36,8 @@ $nav_contact = ($current_page == 'contact.php') ? $class_active : $class_inactiv
     <title>SI BanTal</title>
     
     <link rel="stylesheet" href="../dist/output.css" />
+    
+    <script src="https://cdn.tailwindcss.com"></script>
 
     <style type="text/tailwindcss">
       .form-input {
@@ -51,11 +53,21 @@ $nav_contact = ($current_page == 'contact.php') ? $class_active : $class_inactiv
     </style>
   </head>
   
-  <body class="font-sans text-slate-800 bg-slate-50 flex flex-col min-h-screen">
+  <body class="font-sans text-slate-800 bg-slate-50 flex flex-col min-h-screen relative">
+    
+    <div class="fixed inset-0 z-[-1] bg-slate-50 pointer-events-none overflow-hidden">
+        <div class="absolute top-[-10%] left-[-5%] w-[40rem] h-[40rem] bg-teal-200/40 rounded-full blur-[100px]"></div>
+        
+        <div class="absolute bottom-[-10%] right-[-5%] w-[35rem] h-[35rem] bg-amber-200/30 rounded-full blur-[100px]"></div>
+        
+        <div class="absolute top-[30%] left-[20%] w-[30rem] h-[30rem] bg-emerald-200/20 rounded-full blur-[100px]"></div>
+        
+        <div class="absolute inset-0" style="background-image: radial-gradient(rgba(15, 23, 42, 0.03) 1px, transparent 1px); background-size: 24px 24px;"></div>
+    </div>
     
     <?php if (!isset($is_auth_page) || !$is_auth_page): ?>
     
-    <header id="header" class="bg-transparent absolute top-0 left-0 w-full flex items-center z-10 transition duration-300">
+    <header id="header" class="bg-white/60 backdrop-blur-md absolute top-0 left-0 w-full flex items-center z-50 transition duration-300 border-b border-slate-200/50">
       <div class="container mx-auto">
         <div class="flex items-center justify-between relative px-4">
           <div class="px-4">

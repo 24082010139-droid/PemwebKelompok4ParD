@@ -113,7 +113,7 @@ $result_my_offer = mysqli_query($conn, $query_my_offer);
                                     <?php while($row = mysqli_fetch_assoc($result_danai)): ?>
                                     <tr class="border-b border-slate-100 hover:bg-teal-50">
                                         <td class="p-4"><?= date('d M Y', strtotime($row['tgl_danai'])) ?></td>
-                                        <td class="p-4 font-bold text-slate-900">Desa <?= htmlspecialchars($row['desa']) ?></td>
+                                        <td class="p-4 font-bold text-slate-900"> <?= htmlspecialchars($row['desa']) ?></td>
                                         <td class="p-4 uppercase text-xs font-bold text-slate-500"><?= htmlspecialchars($row['target_bantuan']) ?></td>
                                         <td class="p-4"><span class="bg-teal-100 text-teal-700 px-3 py-1 rounded-full text-xs font-bold">Diproses Admin</span></td>
                                         <td class="p-4 text-center">
